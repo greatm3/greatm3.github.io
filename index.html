@@ -32,11 +32,11 @@
                 }
             }
             .animate-tilt {
-                animation: tilt 8s ease-in-out infinite; 
+                animation: tilt 8s ease-in-out infinite;
             }
         </style>
     </head>
-    <body class="bg-lighter text-darker font-sans"> 
+    <body class="bg-lighter text-darker font-sans">
         <section
             class="min-h-screen flex flex-col justify-center items-center px-6 py-12"
         >
@@ -48,35 +48,64 @@
                 />
                 <div class="text-center sm:text-left">
                     <h1 class="text-5xl font-bold mb-2">Great M3</h1>
-                    <p class="text-lg">
-                        Backend Developer | Building from Scratch
-                    </p>
+                    <p class="text-lg">Programmer | Backend, Infrastruture</p>
                 </div>
             </div>
-        </section> 
-        <section id="about" class="max-w-3xl mx-auto py-8 px-6">
+            <a
+                href="#about"
+                class="absolute bottom-6 text-darker/70 hover:text-darker transition"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-8 h-8 animate-bounce"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                    />
+                </svg>
+            </a>
+        </section>
+        <section id="about" class="max-w-3xl mx-auto py-5 px-6">
             <h2 class="text-3xl font-bold mb-3">About Me</h2>
             <p class="text-base leading-relaxed">
-                I'm Great, a backend-focused developer learning Node.js,
-                TypeScript, and systems programming. I love building from
-                scratch and exploring computer science foundations.
+                I'm Great, a backend-focused developer passionate about
+                understanding how things work under the hood. I'm currently
+                learning Node.js, TypeScript, and systems programming, with a
+                strong interest in networking, protocols, and infrastructure. I
+                enjoy building; like my custom HTTP
+                server, to sharpen my fundamentals and deepen my grasp of
+                computer science concepts. Beyond coding, I'm also focused on
+                improving myself and growing into a well-rounded
+                soul.
             </p>
-        </section> 
-        <section id="interests" class="max-w-3xl mx-auto py-8 px-6">
+        </section>
+        <section id="interests" class="max-w-3xl mx-auto py-5 px-6">
             <h2 class="text-3xl font-bold mb-3">Interests</h2>
             <ul class="list-disc list-inside space-y-2 text-base">
-                <li>Music</li>
+                <li>Music (I play the keyboard & sing)</li>
                 <li>Movies</li>
                 <li>Rizzzz</li>
-                <li>Upping my math skills</li>
+                <li>Maxxing up my math skills</li>
             </ul>
-        </section> 
-        <section id="projects" class="max-w-3xl mx-auto py-8 px-6">
+        </section>
+        <section id="projects" class="max-w-3xl mx-auto py-5 px-6">
             <h2 class="text-3xl font-bold mb-3">Projects</h2>
             <ul class="list-disc list-inside space-y-2 text-base">
                 <li>
-                    <strong>HTTP from Scratch</strong> — A custom HTTP server
-                    built with Node.js and TypeScript.
+                    <strong>HTTP from Scratch</strong> <span class="bg-darker text-lighter px-2 py-1 rounded-md">in progress...</span> — A barebones HTTP/1.1
+                    server implemented in TypeScript using Node.js net module.
+                    It works directly on raw TCP sockets, handling request
+                    parsing, response formatting, and routing logic without
+                    relying on Node's built-in http module or any frameworks.
+                    This project gave me hands-on experience with low-level
+                    networking, protocol design, and the mechanics behind web
+                    servers.
                     <a
                         href="https://github.com/greatm3/HTTP-from-scratch"
                         target="_blank"
@@ -84,16 +113,9 @@
                         >View on GitHub</a
                     >
                 </li>
-                <li>
-                    <strong>Project Title</strong> — Short description of your
-                    project.
-                    <a href="#" target="_blank" class="underline"
-                        >View Project</a
-                    >
-                </li>
             </ul>
-        </section> 
-        <section id="skills" class="max-w-3xl mx-auto py-8 px-6">
+        </section>
+        <section id="skills" class="max-w-3xl mx-auto py-5 px-6">
             <h2 class="text-3xl font-bold mb-3">Skills</h2>
             <ul class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-base">
                 <li>JavaScript</li>
@@ -103,8 +125,8 @@
                 <li>HTTP & Networking</li>
                 <li>Linux Basics</li>
             </ul>
-        </section> 
-        <section id="contact" class="max-w-3xl mx-auto py-8 px-6">
+        </section>
+        <section id="contact" class="max-w-3xl mx-auto py-5 px-6">
             <h2 class="text-3xl font-bold mb-3">Contact</h2>
             <ul class="space-y-2 text-base">
                 <li>
@@ -124,7 +146,12 @@
                 </li>
                 <li>
                     LinkedIn:
-                    <a href="https://linkedin.com/in/greatezenna" target="_blank" class="underline">LinkedIn</a>
+                    <a
+                        href="https://linkedin.com/in/greatezenna"
+                        target="_blank"
+                        class="underline"
+                        >linkedin.com/in/greatezenna</a
+                    >
                 </li>
             </ul>
         </section>
