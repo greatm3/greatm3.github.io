@@ -1,23 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Great M3</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h2 class="text">under construction...</h2>
-    <p>But you can still check out what i'm working on</p>
-    <div class="link">
-      <a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank">https://github.com/greatm3/HTTP-from-scratch</a>
-    </div>
-
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Great M3 | Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style type="text/tailwindcss">
+            @theme {
+                --color-lighter: #e9e3de;
+                --color-darker: #333231;
+                --font-sans: "Libertinus Sans", sans-serif;
+            }
+        </style>
+        <style>
+            @keyframes tilt {
+                0%,
+                100% {
+                    transform: rotate(0deg);
+                }
+                25% {
+                    transform: rotate(-3deg);
+                }
+                75% {
+                    transform: rotate(3deg);
+                }
+            }
+            .animate-tilt {
+                animation: tilt 8s ease-in-out infinite; 
+            }
+        </style>
+    </head>
+    <body class="bg-lighter text-darker font-sans"> 
+        <section
+            class="min-h-screen flex flex-col justify-center items-center px-6 py-12"
+        >
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+                <img
+                    src="https://i.postimg.cc/MKY58BbP/asta.jpg"
+                    alt="Profile"
+                    class="w-40 h-40 object-cover rounded-lg animate-tilt"
+                />
+                <div class="text-center sm:text-left">
+                    <h1 class="text-5xl font-bold mb-2">Great M3</h1>
+                    <p class="text-lg">
+                        Backend Developer | Building from Scratch
+                    </p>
+                </div>
+            </div>
+        </section> 
+        <section id="about" class="max-w-3xl mx-auto py-8 px-6">
+            <h2 class="text-3xl font-bold mb-3">About Me</h2>
+            <p class="text-base leading-relaxed">
+                I'm Great, a backend-focused developer learning Node.js,
+                TypeScript, and systems programming. I love building from
+                scratch and exploring computer science foundations.
+            </p>
+        </section> 
+        <section id="interests" class="max-w-3xl mx-auto py-8 px-6">
+            <h2 class="text-3xl font-bold mb-3">Interests</h2>
+            <ul class="list-disc list-inside space-y-2 text-base">
+                <li>Music</li>
+                <li>Movies</li>
+                <li>Rizzzz</li>
+                <li>Upping my math skills</li>
+            </ul>
+        </section> 
+        <section id="projects" class="max-w-3xl mx-auto py-8 px-6">
+            <h2 class="text-3xl font-bold mb-3">Projects</h2>
+            <ul class="list-disc list-inside space-y-2 text-base">
+                <li>
+                    <strong>HTTP from Scratch</strong> — A custom HTTP server
+                    built with Node.js and TypeScript.
+                    <a
+                        href="https://github.com/greatm3/HTTP-from-scratch"
+                        target="_blank"
+                        class="underline"
+                        >View on GitHub</a
+                    >
+                </li>
+                <li>
+                    <strong>Project Title</strong> — Short description of your
+                    project.
+                    <a href="#" target="_blank" class="underline"
+                        >View Project</a
+                    >
+                </li>
+            </ul>
+        </section> 
+        <section id="skills" class="max-w-3xl mx-auto py-8 px-6">
+            <h2 class="text-3xl font-bold mb-3">Skills</h2>
+            <ul class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-base">
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>Node.js</li>
+                <li>Git & GitHub</li>
+                <li>HTTP & Networking</li>
+                <li>Linux Basics</li>
+            </ul>
+        </section> 
+        <section id="contact" class="max-w-3xl mx-auto py-8 px-6">
+            <h2 class="text-3xl font-bold mb-3">Contact</h2>
+            <ul class="space-y-2 text-base">
+                <li>
+                    Email:
+                    <a href="mailto:ezennagreat@gmail.com" class="underline"
+                        >ezennagreat@gmail.com</a
+                    >
+                </li>
+                <li>
+                    GitHub:
+                    <a
+                        href="https://github.com/greatm3"
+                        target="_blank"
+                        class="underline"
+                        >github.com/greatm3</a
+                    >
+                </li>
+                <li>
+                    LinkedIn:
+                    <a href="#" target="_blank" class="underline">LinkedIn</a>
+                </li>
+            </ul>
+        </section>
+    </body>
 </html>
