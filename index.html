@@ -3,129 +3,357 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Great Ezenna (M3) | Systems Engineer & Mathematics Student</title>
-        
-        <script src="https://cdn.tailwindcss.com"></script>
+
+        <title>
+            Great Ezenna (M3) | Systems Engineer & Backend Developer Portfolio
+        </title>
+        <meta
+            name="title"
+            content="Great Ezenna (M3) | Systems Engineer & Backend Developer Portfolio"
+        />
+        <meta
+            name="description"
+            content="Great Ezenna is a 18-year-old systems engineer from Nigeria specializing in Node.js, TypeScript, and low-level programming. Building HTTP servers from scratch and exploring systems programming, networking protocols, and infrastructure engineering."
+        />
+        <meta
+            name="keywords"
+            content="Great Ezenna, Great M3, systems engineer, backend developer, Node.js developer, TypeScript, HTTP server, TCP/IP, systems programming, Nigeria developer, computer science, networking protocols, infrastructure engineer, low-level programming"
+        />
+        <meta name="author" content="Great Ezenna" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://greatm3.tech" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://greatm3.tech" />
+        <meta
+            property="og:title"
+            content="Great Ezenna (M3) | Systems Engineer & Backend Developer"
+        />
+        <meta
+            property="og:description"
+            content="18-year-old systems engineer from Nigeria building backend infrastructure from first principles. Specializing in Node.js, TypeScript, and low-level systems programming."
+        />
+        <meta
+            property="og:image"
+            content="https://i.postimg.cc/MKY58BbP/asta.jpg"
+        />
+        <meta property="og:site_name" content="Great M3 Portfolio" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://greatm3.tech" />
+        <meta
+            name="twitter:title"
+            content="Great Ezenna (M3) | Systems Engineer & Backend Developer"
+        />
+        <meta
+            name="twitter:description"
+            content="18-year-old systems engineer from Nigeria building backend infrastructure from first principles. Specializing in Node.js, TypeScript, and low-level systems programming."
+        />
+        <meta
+            name="twitter:image"
+            content="https://i.postimg.cc/MKY58BbP/asta.jpg"
+        />
+        <meta name="twitter:creator" content="@0x_greatm3" />
+
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="theme-color" content="#333231" />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Great Ezenna",
+                "alternateName": "Great M3",
+                "url": "https://greatm3.tech",
+                "image": "https://i.postimg.cc/MKY58BbP/asta.jpg",
+                "sameAs": [
+                    "https://github.com/greatm3",
+                    "https://linkedin.com/in/greatezenna",
+                    "https://x.com/0x_greatm3"
+                ],
+                "jobTitle": "Systems Engineer",
+                "worksFor": {
+                    "@type": "Person",
+                    "name": "Independent"
+                },
+                "knowsAbout": [
+                    "Systems Programming",
+                    "Backend Development",
+                    "Node.js",
+                    "TypeScript",
+                    "HTTP Protocol",
+                    "TCP/IP",
+                    "Networking",
+                    "Infrastructure Engineering"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "NG"
+                }
+            }
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style type="text/tailwindcss">
+            @theme {
+                --color-lighter: #e9e3de;
+                --color-darker: #333231;
+                --font-sans: "Libertinus Sans", sans-serif;
+            }
+        </style>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-            
-            body {
-                font-family: 'Space Mono', monospace;
+            @keyframes tilt {
+                0%,
+                100% {
+                    transform: rotate(0deg);
+                }
+                25% {
+                    transform: rotate(-3deg);
+                }
+                75% {
+                    transform: rotate(3deg);
+                }
             }
-            
-            /* Retained Glitch Animation */
-            @keyframes glitch {
-                0% { transform: translate(0); }
-                20% { transform: translate(-2px, 2px); }
-                40% { transform: translate(-2px, -2px); }
-                60% { transform: translate(2px, 2px); }
-                80% { transform: translate(2px, -2px); }
-                100% { transform: translate(0); }
-            }
-            .glitch:hover {
-                animation: glitch 0.3s infinite;
+            .animate-tilt {
+                animation: tilt 8s ease-in-out infinite;
             }
         </style>
     </head>
-    <body class="bg-white text-black font-mono overflow-x-hidden">
-        <div class="grid lg:grid-cols-2 min-h-screen">
-            
-            <section id="hero" class="border-r border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center bg-black text-white">
-                <div class="mb-8">
-                    <img
-                        src="https://i.postimg.cc/MKY58BbP/asta.jpg"
-                        alt="Profile"
-                        class="w-32 h-32 object-cover border-4 border-white mb-6 glitch"
+    <body class="bg-lighter text-darker font-sans">
+        <section
+            class="min-h-screen flex flex-col justify-center items-center px-6 py-12"
+        >
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+                <img
+                    src="https://i.postimg.cc/MKY58BbP/asta.jpg"
+                    alt="Profile"
+                    class="w-40 h-40 object-cover rounded-lg animate-tilt"
+                />
+                <div class="text-center sm:text-left">
+                    <h1 class="text-5xl font-bold mb-2">Great M3</h1>
+                    <p class="text-lg">
+                        Systems Engineer | Building from First Principles
+                    </p>
+                </div>
+            </div>
+            <a
+                href="#about"
+                class="absolute bottom-6 text-darker/70 hover:text-darker transition"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-8 h-8 animate-bounce"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
                     />
-                    <h1 class="text-5xl lg:text-6xl font-bold mb-4"># Great M3</h1>
-                    <p class="text-xl lg:text-2xl mb-6 leading-relaxed">
-                        > Systems Engineer & Mathematics Student<br>
-                        > Building Infrastructure from First Principles
-                    </p>
-                </div>
-                <div class="space-y-2 text-sm lg:text-base opacity-80">
-                    <p>> Age: 18, based in Nigeria</p>
-                    <p>> Current Stack: Node.js | TypeScript | PostgreSQL | Redis</p>
-                    <p>> Next Focus: C | OS Concepts | Distributed Systems</p>
-                    <p>> Collaboration: Open to technical challenges and connections</p>
-                </div>
-            </section>
-
-            <section id="narrative" class="border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center">
-                <h2 class="text-3xl font-bold mb-6">## Core Philosophy</h2>
-                <div class="space-y-4 leading-relaxed text-sm lg:text-base">
-                    <p>
-                        I am an 18-year-old high-agency engineer committed to low-level mastery. I view my upcoming Mathematics degree (Jan 2026) as the formal logic foundation for designing robust, scalable computer systems.
-                    </p>
-                    <p>
-                        My current focus is backend infrastructure: peeling back the layers of abstraction to understand how servers, protocols (TCP/IP), and operating systems *actually* function.
-                    </p>
-                    <p>
-                        My learning is documentation-driven and hands-on: sockets before Express, source code before tutorials. The goal is to evolve from proficient backend development to high-impact systems and infrastructure engineering.
-                    </p>
-                </div>
-            </section>
-
-            <section id="projects" class="border-r border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center bg-black text-white">
-                <h2 class="text-3xl font-bold mb-6">## Key Projects</h2>
-                <div class="space-y-6">
-                    
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">HTTP from Scratch</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">PROTOCOL</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            A barebones HTTP/1.1 server using raw TCP sockets (`net` module). Learned HTTP message parsing and socket lifecycle management directly from RFC specifications.
-                        </p>
-                        <a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
-                        </a>
+                </svg>
+            </a>
+        </section>
+        <section id="about" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">About Me</h2>
+            <p class="text-base leading-relaxed mb-4">
+                I'm Great Ezenna, an 18-year-old beginner systems-focused
+                engineer from Nigeria. I don't just use abstractions, I build
+                them. My approach is backend-first and low-level: understanding
+                how servers, protocols, and operating systems work beneath the
+                surface.
+            </p>
+            <p class="text-base leading-relaxed mb-4">
+                Currently specializing in Node.js and TypeScript, I'm working on
+                an HTTP server implementation from scratch to understand
+                networking at the protocol level. But this is just the
+                foundation. My path leads toward systems programming,
+                infrastructure engineering, and eventually contributing to the
+                tools and platforms that power the internet.
+            </p>
+            <p class="text-base leading-relaxed">
+                I learn through documentation and hands-on building. No
+                tutorials, no shortcuts. I'm preparing to study Computer
+                Science, while continuing to deepen my understanding of how
+                computers actually work. Beyond code, I'm focused on continuous
+                self-improvement, becoming not just a better engineer, but a
+                better thinker and builder.
+            </p>
+        </section>
+        <section id="philosophy" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">Engineering Philosophy</h2>
+            <p class="text-base leading-relaxed mb-3">
+                I believe in building understanding from the ground up. Modern
+                development often treats infrastructure as magic, I want to
+                understand the magic. That means:
+            </p>
+            <ul class="space-y-2 text-base ml-6">
+                <li>
+                    <strong>Starting with fundamentals:</strong> TCP before HTTP
+                    frameworks, sockets before Express
+                </li>
+                <li>
+                    <strong>Reading source code:</strong> Node.js internals,
+                    libuv, V8, understanding what happens when I call a function
+                </li>
+                <li>
+                    <strong>Building what exists:</strong> Reimplementing tools
+                    to understand their constraints and design decisions
+                </li>
+                <li>
+                    <strong>Documentation over tutorials:</strong> Primary
+                    sources teach you to think; tutorials teach you to copy
+                </li>
+            </ul>
+        </section>
+        <section id="trajectory" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">Where I'm Headed</h2>
+            <p class="text-base leading-relaxed mb-3">
+                My long-term goal is systems and infrastructure engineering. The
+                roadmap:
+            </p>
+            <ul class="space-y-2 text-base ml-6">
+                <li>
+                    <strong>Current:</strong> Deep dive into Node.js/TypeScript,
+                    backend engineering, networking protocols, HTTP internals
+                </li>
+                <li>
+                    <strong>Near-term:</strong> Systems programming with C/Rust,
+                    operating systems concepts, concurrency models
+                </li>
+                <li>
+                    <strong>Medium-term:</strong> Distributed systems, database
+                    internals, infrastructure at scale
+                </li>
+                <li>
+                    <strong>Long-term:</strong> Contributing to foundational
+                    tools, compilers, runtimes, database engines, networking
+                    infrastructure
+                </li>
+            </ul>
+        </section>
+        <section id="interests" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">Beyond Code</h2>
+            <ul class="list-disc list-inside space-y-2 text-base">
+                <li>Music (keyboard)</li>
+                <li>I watch movies a lot.</li>
+                <li>Mathematics (currently leveling up)</li>
+                <li>Personal development and self-optimization</li>
+            </ul>
+        </section>
+        <section id="projects" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">Projects</h2>
+            <div class="space-y-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <strong class="text-lg">HTTP from Scratch</strong>
+                        <span
+                            class="bg-darker text-lighter px-2 py-1 rounded-md text-sm"
+                            >in progress</span
+                        >
                     </div>
-                    
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">Blog API</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">SCALABILITY</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            Robust backend with Authorization, Pagination, Search, and planned Redis Caching. Focus on database optimization (PostgreSQL) and modular backend design.
-                        </p>
-                        <a href="https://github.com/greatm3/blog-api" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
-                        </a>
-                    </div>
-
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">Auth API</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">SECURITY</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            Dedicated user authentication using Express/TypeScript/PostgreSQL. Implemented Bcrypt hashing and secure JWT token generation/verification flows.
-                        </p>
-                        <a href="https://github.com/greatm3/auth-api" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
-                        </a>
-                    </div>
+                    <p class="text-base leading-relaxed mb-2">
+                        A ground-up HTTP/1.1 server implementation using raw TCP
+                        sockets in Node.js (migrating to TypeScript). No
+                        frameworks, no http module, just the net module and RFC
+                        specifications. Handles request parsing, response
+                        formatting, routing, and connection management at the
+                        protocol level.
+                    </p>
+                    <p class="text-base leading-relaxed mb-2">
+                        This project taught me how web servers actually work:
+                        socket management, HTTP message parsing, connection
+                        handling, and the difference between what frameworks
+                        give you and what the protocol requires. It's the
+                        foundation for understanding modern web infrastructure.
+                    </p>
+                    <a
+                        href="https://github.com/greatm3/HTTP-from-scratch"
+                        target="_blank"
+                        class="underline text-base"
+                        >View on GitHub →</a
+                    >
                 </div>
-            </section>
-
-            <section id="contact" class="border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center">
-                <h2 class="text-3xl font-bold mb-6">## Connect</h2>
-                <div class="space-y-4">
-                    <a href="mailto:hey@greatm3.tech" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        EMAIL<br>
-                        <span class="text-sm">hey@greatm3.tech</span>
-                    </a>
-                    <a href="https://github.com/greatm3" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        GITHUB<br>
-                        <span class="text-sm">github.com/greatm3</span>
-                    </a>
-                    <a href="https://x.com/0x_greatm3" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        X (TWITTER)<br>
-                        <span class="text-sm">x.com/0x_greatm3</span>
-                    </a>
-                    <a href="https://linkedin.com/in/greatezenna" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        LINKEDIN<br>
-                        <span class="text-sm">linkedin.com/in/greatezenna</span>
-                    </a>
+            </div>
+        </section>
+        <section id="skills" class="max-w-3xl mx-auto py-5 px-6">
+            <h2 class="text-3xl font-bold mb-3">Technical Skills</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Languages & Runtimes</h3>
+                    <p class="text-base">JavaScript, TypeScript, Node.js</p>
                 </div>
-            </section>
-        </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Systems & Networking</h3>
+                    <p class="text-base">
+                        HTTP/1.1, TCP/IP, Socket Programming, Protocol Design
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Tools & Workflow</h3>
+                    <p class="text-base">
+                        Git/GitHub, Linux CLI(beginner level), Express
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Learning Path</h3>
+                    <p class="text-base">
+                        Systems Programming (C/Rust), OS Concepts, Distributed
+                        Systems
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="max-w-3xl mx-auto py-5 px-6 mb-12">
+            <h2 class="text-3xl font-bold mb-3">Contact</h2>
+            <p class="text-base mb-4">
+                Open to conversations about systems programming, infrastructure
+                engineering, or interesting technical problems.
+            </p>
+            <ul class="space-y-2 text-base">
+                <li>
+                    Email:
+                    <a href="mailto:ezennagreat@gmail.com" class="underline"
+                        >hey@greatm3.tech</a
+                    >
+                </li>
+                <li>
+                    X:
+                    <a
+                        href="https://x.com/0x_greatm3"
+                        class="underline"
+                        target="_blank"
+                        >x.com/0x_greatm3</a
+                    >
+                </li>
+                <li>
+                    GitHub:
+                    <a
+                        href="https://github.com/greatm3"
+                        target="_blank"
+                        class="underline"
+                        >github.com/greatm3</a
+                    >
+                </li>
+                <li>
+                    LinkedIn:
+                    <a
+                        href="https://linkedin.com/in/greatezenna"
+                        target="_blank"
+                        class="underline"
+                        >linkedin.com/in/greatezenna</a
+                    >
+                </li>
+            </ul>
+        </section>
     </body>
 </html>
