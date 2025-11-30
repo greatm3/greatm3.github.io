@@ -37,7 +37,6 @@
         </script>
 
         <style>
-            /* Base styles for DARK MODE */
             body {
                 background-color: var(--color-bg);
                 color: var(--color-text);
@@ -46,7 +45,6 @@
                 transition: background-color 0.3s, color 0.3s;
             }
 
-            /* CSS Variables for Dynamic Color Inversion */
             :root {
                 --color-bg: #1a1816;
                 --color-text: #e6e4e0;
@@ -64,30 +62,26 @@
                     );
             }
 
-            /* Light Mode Variables (Inverted Colors) */
             .light {
-                --color-bg: #f2f0e9; /* Light Paper */
+                --color-bg: #f2f0e9; 
                 --color-text: #1a1816;
                 --color-dim: #4b4643;
                 --color-line: #cbc7c0;
                 --color-line-light: #d5d2cc;
             }
-
-            /* Scrollbar styles adapting to variables */
+            
             ::-webkit-scrollbar-track {
                 background: var(--color-bg);
             }
             ::-webkit-scrollbar-thumb {
                 background: var(--color-line);
             }
-
-            /* Selection style adapting to variables */
+            
             ::selection {
                 background: var(--color-text);
                 color: var(--color-bg);
             }
-
-            /* Specific Component Styles */
+            
             .math-link {
                 position: relative;
                 text-decoration: none;
@@ -408,9 +402,8 @@
                             style="color: var(--color-dim)"
                             >OBSERVATION 4.1</span
                         >
-                        Beyond systems and logic, interests include **singing,
-                        music production, and cinema** (a fan of directors like
-                        Denis Villeneuve).
+                        Beyond systems and logic, interests include singing,
+                        music, movies and eating.
                     </p>
 
                     <p>
