@@ -1,131 +1,579 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Great Ezenna (M3) | Systems Engineer & Mathematics Student</title>
-        
+        <title>Great Ezenna (M3) | Q.E.D.</title>
+
         <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            math: {
+                                bg: '#1A1816',
+                                text: '#E6E4E0',
+                                dim: '#858075',
+                                line: '#33302C',
+                            },
+                        },
+                        fontFamily: {
+                            serif: ['"EB Garamond"', 'serif'],
+                            mono: ['"Space Mono"', 'monospace'],
+                        },
+                    },
+                },
+            };
+        </script>
+
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-            
+            /* Base styles for DARK MODE */
             body {
-                font-family: 'Space Mono', monospace;
+                background-color: var(--color-bg);
+                color: var(--color-text);
+                background-image: var(--bg-grid);
+                background-size: 40px 40px;
+                transition: background-color 0.3s, color 0.3s;
             }
-            
-            /* Retained Glitch Animation */
-            @keyframes glitch {
-                0% { transform: translate(0); }
-                20% { transform: translate(-2px, 2px); }
-                40% { transform: translate(-2px, -2px); }
-                60% { transform: translate(2px, 2px); }
-                80% { transform: translate(2px, -2px); }
-                100% { transform: translate(0); }
+
+            /* CSS Variables for Dynamic Color Inversion */
+            :root {
+                --color-bg: #1a1816;
+                --color-text: #e6e4e0;
+                --color-dim: #858075;
+                --color-line: #33302c;
+                --color-line-light: #262422;
+                --bg-grid: linear-gradient(
+                        var(--color-line-light) 1px,
+                        transparent 1px
+                    ),
+                    linear-gradient(
+                        90deg,
+                        var(--color-line-light) 1px,
+                        transparent 1px
+                    );
             }
-            .glitch:hover {
-                animation: glitch 0.3s infinite;
+
+            /* Light Mode Variables (Inverted Colors) */
+            .light {
+                --color-bg: #f2f0e9; /* Light Paper */
+                --color-text: #1a1816;
+                --color-dim: #4b4643;
+                --color-line: #cbc7c0;
+                --color-line-light: #d5d2cc;
+            }
+
+            /* Scrollbar styles adapting to variables */
+            ::-webkit-scrollbar-track {
+                background: var(--color-bg);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--color-line);
+            }
+
+            /* Selection style adapting to variables */
+            ::selection {
+                background: var(--color-text);
+                color: var(--color-bg);
+            }
+
+            /* Specific Component Styles */
+            .math-link {
+                position: relative;
+                text-decoration: none;
+                padding-bottom: 2px;
+                border-bottom: 1px solid var(--color-dim);
+                transition: border-bottom-color 0.3s ease;
+            }
+            .math-link:hover {
+                border-bottom-color: var(--color-text);
+            }
+
+            .serif-italic {
+                font-family: 'EB Garamond', serif;
+                font-style: italic;
             }
         </style>
     </head>
-    <body class="bg-white text-black font-mono overflow-x-hidden">
-        <div class="grid lg:grid-cols-2 min-h-screen">
-            
-            <section id="hero" class="border-r border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center bg-black text-white">
-                <div class="mb-8">
-                    <img
-                        src="https://i.postimg.cc/MKY58BbP/asta.jpg"
-                        alt="Profile"
-                        class="w-32 h-32 object-cover border-4 border-white mb-6 glitch"
-                    />
-                    <h1 class="text-5xl lg:text-6xl font-bold mb-4"># Great M3</h1>
-                    <p class="text-xl lg:text-2xl mb-6 leading-relaxed">
-                        > Systems Engineer & Mathematics Student<br>
-                        > Building Infrastructure from First Principles
-                    </p>
+    <body
+        class="min-h-screen flex flex-col items-center justify-center p-6 md:p-12 font-serif selection:bg-white selection:text-black"
+    >
+        <button
+            id="theme-toggle"
+            class="fixed top-4 right-4 z-50 p-2 border-2 border-math-text border-opacity-70 text-math-text hover:bg-math-text hover:text-math-bg transition-colors"
+        >
+            <svg
+                id="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6 hidden dark:block"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                />
+            </svg>
+
+            <svg
+                id="moon-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6 block dark:hidden"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                />
+            </svg>
+        </button>
+
+        <main class="w-full max-w-3xl relative z-10">
+            <header class="mb-16 border-l pl-6 border-math-dim/30">
+                <h1
+                    class="text-5xl md:text-6xl font-medium tracking-tight mb-2"
+                    style="color: var(--color-text)"
+                >
+                    Great Ezenna
+                    <span
+                        class="text-xl font-mono align-top mt-2 inline-block"
+                        style="color: var(--color-dim)"
+                        >(M3)</span
+                    >
+                </h1>
+
+                <div
+                    class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 font-mono text-sm mt-4"
+                    style="color: var(--color-dim)"
+                >
+                    <span>// Systems Engineer</span>
+                    <span class="hidden md:inline">&middot;</span>
+                    <span>// Mathematics Student</span>
+                    <span class="hidden md:inline">&middot;</span>
+                    <span>t = 18 yrs</span>
                 </div>
-                <div class="space-y-2 text-sm lg:text-base opacity-80">
-                    <p>> Age: 18, based in Nigeria</p>
-                    <p>> Current Stack: Node.js | TypeScript | PostgreSQL | Redis</p>
-                    <p>> Next Focus: C | OS Concepts | Distributed Systems</p>
-                    <p>> Collaboration: Open to technical challenges and connections</p>
+
+                <div
+                    class="mt-8 text-2xl font-serif opacity-60"
+                    style="color: var(--color-dim)"
+                >
+                    Let <span class="serif-italic">f</span>(x) &rarr;
+                    Infrastructure
+                </div>
+            </header>
+
+            <section class="mb-16">
+                <div
+                    class="flex items-baseline justify-between mb-6 border-b pb-2"
+                    style="border-color: var(--color-line)"
+                >
+                    <h2
+                        class="text-2xl italic font-serif"
+                        style="color: var(--color-text)"
+                    >
+                        § 1. Definitions & Axioms
+                    </h2>
+                </div>
+
+                <div
+                    class="space-y-6 text-lg leading-relaxed"
+                    style="color: var(--color-dim)"
+                >
+                    <p style="color: var(--color-text)">
+                        <span
+                            class="font-mono text-xs block mb-1"
+                            style="color: var(--color-dim)"
+                            >DEF 1.1</span
+                        >
+                        I am an 18-year-old high-agency engineer committed to
+                        low-level mastery. My upcoming Mathematics degree (Jan
+                        2026) will add to the formal logic foundation for
+                        designing robust, scalable computer systems.
+                    </p>
+
+                    <p style="color: var(--color-text)">
+                        <span
+                            class="font-mono text-xs block mb-1"
+                            style="color: var(--color-dim)"
+                            >AXIOM 1.2</span
+                        >
+                        My current focus is backend infrastructure: peeling back
+                        layers of abstraction to understand how servers,
+                        protocols (TCP/IP), and operating systems
+                        <span class="serif-italic">actually</span> function.
+                    </p>
+
+                    <p style="color: var(--color-text)">
+                        <span
+                            class="font-mono text-xs block mb-1"
+                            style="color: var(--color-dim)"
+                            >METHOD 1.3</span
+                        >
+                        Learning is documentation-driven and hands-on: sockets
+                        before Express, source code before tutorials. The
+                        long-term goal is to evolve from strong backend
+                        development to high-impact systems and infrastructure
+                        engineering.
+                    </p>
+
+                    <p style="color: var(--color-text)">
+                        <span
+                            class="font-mono text-xs block mb-1"
+                            style="color: var(--color-dim)"
+                            >STUDY 1.4</span
+                        >
+                        Currently taking the CS50 “Introduction to Programming”
+                        course, upgrading my C fundamentals, studying a full C
+                        programming book, and mastering Node.js through deep,
+                        practical backend work.
+                    </p>
                 </div>
             </section>
 
-            <section id="narrative" class="border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center">
-                <h2 class="text-3xl font-bold mb-6">## Core Philosophy</h2>
-                <div class="space-y-4 leading-relaxed text-sm lg:text-base">
-                    <p>
-                        I am an 18-year-old high-agency engineer committed to low-level mastery. I view my upcoming Mathematics degree (Jan 2026) as the formal logic foundation for designing robust, scalable computer systems.
-                    </p>
-                    <p>
-                        My current focus is backend infrastructure: peeling back the layers of abstraction to understand how servers, protocols (TCP/IP), and operating systems *actually* function.
-                    </p>
-                    <p>
-                        My learning is documentation-driven and hands-on: sockets before Express, source code before tutorials. The goal is to evolve from proficient backend development to high-impact systems and infrastructure engineering.
-                    </p>
+            <section class="mb-16">
+                <div
+                    class="flex items-baseline justify-between mb-8 border-b pb-2"
+                    style="border-color: var(--color-line)"
+                >
+                    <h2
+                        class="text-2xl italic font-serif"
+                        style="color: var(--color-text)"
+                    >
+                        § 2. Lemmas (Key Projects)
+                    </h2>
                 </div>
-            </section>
 
-            <section id="projects" class="border-r border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center bg-black text-white">
-                <h2 class="text-3xl font-bold mb-6">## Key Projects</h2>
-                <div class="space-y-6">
-                    
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">HTTP from Scratch</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">PROTOCOL</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            A barebones HTTP/1.1 server using raw TCP sockets (`net` module). Learned HTTP message parsing and socket lifecycle management directly from RFC specifications.
+                <div class="grid gap-8">
+                    <article
+                        class="group relative pl-4 hover:pl-6 transition-all duration-500"
+                    >
+                        <div
+                            class="absolute left-0 top-0 bottom-0 w-[1px] bg-[var(--color-line)] group-hover:bg-[var(--color-text)] transition-colors"
+                        ></div>
+
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3
+                                class="text-xl font-medium"
+                                style="color: var(--color-text)"
+                            >
+                                HTTP from Scratch
+                            </h3>
+                            <span
+                                class="font-mono text-xs border border-[var(--color-dim)] px-2 py-0.5 rounded-full"
+                                style="color: var(--color-dim)"
+                                >PROTOCOL</span
+                            >
+                        </div>
+                        <p
+                            class="mb-3 font-serif leading-relaxed"
+                            style="color: var(--color-dim)"
+                        >
+                            A barebones HTTP/1.1 server using raw TCP sockets
+                            (<code
+                                class="font-mono text-xs"
+                                style="color: var(--color-text)"
+                                >net</code
+                            >
+                            module). Learned HTTP message parsing and socket
+                            lifecycle management directly from RFC
+                            specifications.
                         </p>
-                        <a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
+                        <a
+                            href="https://github.com/greatm3/HTTP-from-scratch"
+                            target="_blank"
+                            class="font-mono text-xs math-link"
+                            style="color: var(--color-text)"
+                        >
+                            source_code &rarr;
                         </a>
-                    </div>
-                    
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">Blog API</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">SCALABILITY</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            Robust backend with Authorization, Pagination, Search, and planned Redis Caching. Focus on database optimization (PostgreSQL) and modular backend design.
-                        </p>
-                        <a href="https://github.com/greatm3/blog-api" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
-                        </a>
-                    </div>
+                    </article>
 
-                    <div class="border border-white p-4">
-                        <strong class="text-xl">Auth API</strong>
-                        <span class="bg-white text-black px-2 py-1 ml-3 text-xs font-bold">SECURITY</span>
-                        <p class="mt-2 text-sm leading-relaxed">
-                            Dedicated user authentication using Express/TypeScript/PostgreSQL. Implemented Bcrypt hashing and secure JWT token generation/verification flows.
+                    <article
+                        class="group relative pl-4 hover:pl-6 transition-all duration-500"
+                    >
+                        <div
+                            class="absolute left-0 top-0 bottom-0 w-[1px] bg-[var(--color-line)] group-hover:bg-[var(--color-text)] transition-colors"
+                        ></div>
+
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3
+                                class="text-xl font-medium"
+                                style="color: var(--color-text)"
+                            >
+                                Blog API
+                            </h3>
+                            <span
+                                class="font-mono text-xs border border-[var(--color-dim)] px-2 py-0.5 rounded-full"
+                                style="color: var(--color-dim)"
+                                >SCALABILITY</span
+                            >
+                        </div>
+                        <p
+                            class="mb-3 font-serif leading-relaxed"
+                            style="color: var(--color-dim)"
+                        >
+                            Robust backend with Authorization, Pagination,
+                            Search, and planned Redis Caching. Focus on database
+                            optimization (PostgreSQL) and modular backend
+                            design.
                         </p>
-                        <a href="https://github.com/greatm3/auth-api" target="_blank" class="inline-block mt-3 text-white border-b border-white hover:border-transparent transition-colors text-sm">
-                            View Source ↗
+                        <a
+                            href="https://github.com/greatm3/blog-api"
+                            target="_blank"
+                            class="font-mono text-xs math-link"
+                            style="color: var(--color-text)"
+                        >
+                            source_code &rarr;
                         </a>
+                    </article>
+
+                    <article
+                        class="group relative pl-4 hover:pl-6 transition-all duration-500"
+                    >
+                        <div
+                            class="absolute left-0 top-0 bottom-0 w-[1px] bg-[var(--color-line)] group-hover:bg-[var(--color-text)] transition-colors"
+                        ></div>
+
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3
+                                class="text-xl font-medium"
+                                style="color: var(--color-text)"
+                            >
+                                Auth API
+                            </h3>
+                            <span
+                                class="font-mono text-xs border border-[var(--color-dim)] px-2 py-0.5 rounded-full"
+                                style="color: var(--color-dim)"
+                                >SECURITY</span
+                            >
+                        </div>
+                        <p
+                            class="mb-3 font-serif leading-relaxed"
+                            style="color: var(--color-dim)"
+                        >
+                            Dedicated user authentication using
+                            Express/TypeScript/PostgreSQL. Implemented Bcrypt
+                            hashing and secure JWT token generation/verification
+                            flows.
+                        </p>
+                        <a
+                            href="https://github.com/greatm3/auth-api"
+                            target="_blank"
+                            class="font-mono text-xs math-link"
+                            style="color: var(--color-text)"
+                        >
+                            source_code &rarr;
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div
+                    class="flex items-baseline justify-between mb-6 border-b pb-2"
+                    style="border-color: var(--color-line)"
+                >
+                    <h2
+                        class="text-2xl italic font-serif"
+                        style="color: var(--color-text)"
+                    >
+                        § 4. Divergence (Hobbies)
+                    </h2>
+                </div>
+
+                <div
+                    class="space-y-6 text-lg leading-relaxed"
+                    style="color: var(--color-text)"
+                >
+                    <p>
+                        <span
+                            class="font-mono text-xs block mb-2"
+                            style="color: var(--color-dim)"
+                            >OBSERVATION 4.1</span
+                        >
+                        Beyond systems and logic, interests include **singing,
+                        music production, and cinema** (a fan of directors like
+                        Denis Villeneuve).
+                    </p>
+
+                    <p>
+                        <span
+                            class="font-mono text-xs block mb-2"
+                            style="color: var(--color-dim)"
+                            >APPLIED RIZZ 4.2</span
+                        >
+                        The theoretical foundation of Rizz is currently under
+                        heavy, yet informal, study.
+                    </p>
+
+                    <div class="w-full pt-4">
+                        <span
+                            class="font-mono text-xs block mb-2"
+                            style="color: var(--color-dim)"
+                            >SOUNDTRACK &Sigma;</span
+                        >
+                        <div
+                            class="border border-[var(--color-line)] p-2 rounded-lg"
+                            style="background-color: var(--color-bg)"
+                        >
+                            <iframe
+                                data-testid="embed-iframe"
+                                style="border-radius: 12px"
+                                src="https://open.spotify.com/embed/track/3bNv3VuUOKgrf5hu3YcuRo?utm_source=generator"
+                                width="100%"
+                                height="152"
+                                frameborder="0"
+                                allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="contact" class="border-b border-black p-8 lg:p-12 min-h-full flex flex-col justify-center">
-                <h2 class="text-3xl font-bold mb-6">## Connect</h2>
-                <div class="space-y-4">
-                    <a href="mailto:hey@greatm3.tech" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        EMAIL<br>
-                        <span class="text-sm">hey@greatm3.tech</span>
+            <section class="mb-20">
+                <div
+                    class="flex items-baseline justify-between mb-6 border-b pb-2"
+                    style="border-color: var(--color-line)"
+                >
+                    <h2
+                        class="text-2xl italic font-serif"
+                        style="color: var(--color-text)"
+                    >
+                        § 5. References & Connect
+                    </h2>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-sm"
+                >
+                    <a
+                        href="mailto:hey@greatm3.tech"
+                        class="group flex items-center justify-between p-3 border border-[var(--color-line)] hover:border-[var(--color-text)] transition-colors"
+                        style="color: var(--color-text)"
+                    >
+                        <span
+                            class="group-hover:text-[var(--color-text)] transition-colors"
+                            style="color: var(--color-dim)"
+                            >EMAIL</span
+                        >
+                        <span>hey@greatm3.tech</span>
                     </a>
-                    <a href="https://github.com/greatm3" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        GITHUB<br>
-                        <span class="text-sm">github.com/greatm3</span>
+                    <a
+                        href="https://github.com/greatm3"
+                        target="_blank"
+                        class="group flex items-center justify-between p-3 border border-[var(--color-line)] hover:border-[var(--color-text)] transition-colors"
+                        style="color: var(--color-text)"
+                    >
+                        <span
+                            class="group-hover:text-[var(--color-text)] transition-colors"
+                            style="color: var(--color-dim)"
+                            >GITHUB</span
+                        >
+                        <span>@greatm3</span>
                     </a>
-                    <a href="https://x.com/0x_greatm3" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        X (TWITTER)<br>
-                        <span class="text-sm">x.com/0x_greatm3</span>
+                    <a
+                        href="https://x.com/0x_greatm3"
+                        target="_blank"
+                        class="group flex items-center justify-between p-3 border border-[var(--color-line)] hover:border-[var(--color-text)] transition-colors"
+                        style="color: var(--color-text)"
+                    >
+                        <span
+                            class="group-hover:text-[var(--color-text)] transition-colors"
+                            style="color: var(--color-dim)"
+                            >TWITTER (X)</span
+                        >
+                        <span>@0x_greatm3</span>
                     </a>
-                    <a href="https://linkedin.com/in/greatezenna" target="_blank" class="block border border-black p-4 hover:bg-black hover:text-white transition-colors">
-                        LINKEDIN<br>
-                        <span class="text-sm">linkedin.com/in/greatezenna</span>
+                    <a
+                        href="https://linkedin.com/in/greatezenna"
+                        target="_blank"
+                        class="group flex items-center justify-between p-3 border border-[var(--color-line)] hover:border-[var(--color-text)] transition-colors"
+                        style="color: var(--color-text)"
+                    >
+                        <span
+                            class="group-hover:text-[var(--color-text)] transition-colors"
+                            style="color: var(--color-dim)"
+                            >LINKEDIN</span
+                        >
+                        <span>/in/greatezenna</span>
                     </a>
                 </div>
             </section>
+
+            <footer
+                class="text-center font-serif italic text-lg mt-24 opacity-30"
+                style="color: var(--color-dim)"
+            >
+                Q.E.D.
+            </footer>
+        </main>
+
+        <div
+            class="fixed top-0 right-0 w-[50vw] h-full opacity-5 pointer-events-none z-0"
+            style="color: var(--color-text)"
+        >
+            <svg
+                viewBox="0 0 100 100"
+                class="w-full h-full stroke-current fill-none"
+            >
+                <path d="M0 100 Q 50 0 100 100" stroke-width="0.2" />
+                <path d="M0 50 Q 50 0 100 50" stroke-width="0.1" />
+                <circle cx="50" cy="50" r="30" stroke-width="0.1" />
+            </svg>
         </div>
+
+        <script>
+            const toggleButton = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+
+            function setTheme(theme) {
+                if (theme === 'light') {
+                    htmlElement.classList.add('light');
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.remove('light');
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+            ) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+            toggleButton.addEventListener('click', () => {
+                const currentTheme = htmlElement.classList.contains('light')
+                    ? 'light'
+                    : 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+        </script>
     </body>
 </html>
