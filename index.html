@@ -2,157 +2,628 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Great Ezenna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Ezenna - Desktop</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Prevents scrolling */
-            overflow: hidden; 
+            user-select: none;
         }
 
         body {
-            background: #050505;
-            background-image: linear-gradient(0deg, transparent 24%, rgba(32, 32, 32, .05) 25%, rgba(32, 32, 32, .05) 26%, transparent 27%, transparent 74%, rgba(32, 32, 32, .05) 75%, rgba(32, 32, 32, .05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-            color: #e0e0e0;
-            font-family: 'Courier New', monospace;
+            background: #008080;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
             height: 100vh;
             width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
 
-        .container {
-            max-width: 600px;
-            width: 90%;
-            /* Vertical visual anchor */
-            border-left: 1px solid #222;
-            padding-left: 1.5rem;
+        .desktop {
+            height: calc(100vh - 28px);
+            padding: 10px;
             position: relative;
         }
 
-        .container::before {
-            content: '';
+        .icon {
+            width: 70px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 4px;
+        }
+
+        .icon-text {
+            color: white;
+            font-size: 11px;
+            text-shadow: 1px 1px 2px black;
+            word-wrap: break-word;
+        }
+
+        .icon.selected .icon-text {
+            background: #000080;
+            color: white;
+        }
+
+        .window {
             position: absolute;
-            left: -1px;
-            top: 0;
-            height: 30px;
-            width: 1px;
-            background: #fff;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+            min-width: 400px;
+            display: none;
+            z-index: 1;
         }
 
-        h1 {
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
-            font-weight: normal;
-            letter-spacing: -0.02em;
+        .window.active {
+            z-index: 100;
         }
 
-        .status {
-            color: #666;
-            margin-bottom: 1.8rem;
-            font-size: 0.85rem;
-        }
-
-        .status::after {
-            content: '_';
-            animation: blink 1.2s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .section {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            color: #444;
-            font-size: 0.7rem;
-            margin-bottom: 0.4rem;
-            letter-spacing: 0.1em;
-        }
-
-        p {
-            margin-bottom: 0.2rem;
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            border-bottom: 1px solid #333;
-            transition: all 0.2s ease;
-        }
-
-        a:hover {
-            border-bottom-color: #fff;
-            background: #111;
-        }
-
-        .links {
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 3px 4px;
             display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-top: 0.5rem;
+            align-items: center;
+            justify-content: space-between;
+            cursor: move;
         }
 
-        .links a {
-            border: none;
-            width: fit-content;
-            font-size: 0.9rem;
+        .window:not(.active) .title-bar {
+            background: #808080;
         }
 
-        .links a:before {
-            content: '-> ';
-            color: #444;
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
         }
 
-        /* Adjustments for very small screens to maintain "No Scroll" */
-        @media (max-height: 500px) {
-            .section { margin-bottom: 1rem; }
-            .status { margin-bottom: 1rem; }
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-bar-controls button {
+            width: 16px;
+            height: 14px;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            background: #c0c0c0;
+            font-size: 8px;
+            font-weight: bold;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .window-body {
+            padding: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .contact-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #808080;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+        }
+
+        .contact-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .contact-title {
+            font-size: 11px;
+            color: #000080;
+        }
+
+        .field-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+
+        .field-label {
+            width: 80px;
+            font-weight: bold;
+        }
+
+        .field-value {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 3px 4px;
+        }
+
+        .field-value a {
+            color: #0000ff;
+            text-decoration: none;
+        }
+
+        .project-item {
+            background: #ffffff;
+            border: 1px solid #808080;
+            padding: 8px;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #000080;
+            margin-bottom: 4px;
+        }
+
+        .guestbook-entry {
+            background: #ffffff;
+            border: 1px solid #808080;
+            padding: 8px;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+
+        .button {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            padding: 6px 16px;
+            font-size: 11px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            cursor: pointer;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .button:active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .start-button {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            padding: 2px 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            margin-right: 4px;
+        }
+
+        .start-button:active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .taskbar-divider {
+            width: 2px;
+            height: 22px;
+            border-left: 1px solid #808080;
+            border-right: 1px solid #ffffff;
+            margin: 0 2px;
+        }
+
+        .taskbar-button {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            padding: 2px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            margin-right: 2px;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .taskbar-button.active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .taskbar-clock {
+            margin-left: auto;
+            border: 1px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 2px 8px;
+            font-size: 11px;
+        }
+
+        .context-menu {
+            position: absolute;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            display: none;
+            z-index: 1000;
+        }
+
+        .context-menu-item {
+            padding: 4px 20px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .context-menu-item:hover {
+            background: #000080;
+            color: white;
+        }
+
+        input, textarea {
+            background: #ffffff;
+            border: 1px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 3px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        input:focus, textarea:focus, button:focus {
+            outline: 1px dotted #000;
+            outline-offset: -3px;
+        }
+
+        @media (max-width: 768px) {
+            .window {
+                min-width: 300px;
+                max-width: 90vw;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Great Ezenna</h1>
-        <div class="status">Building.</div>
-
-        <div class="section">
-            <div class="section-title">// WHO</div>
-            <p>Math student at UNN (starts Jan 2026).</p>
-            <p>Learning systems programming in C.</p>
+    <div class="desktop" id="desktop">
+        <div class="icon" ondblclick="openWindow('contact')">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fff' x='4' y='4' width='24' height='24'/%3E%3Crect fill='%23000080' x='8' y='8' width='6' height='6'/%3E%3Crect fill='%23000080' x='18' y='8' width='6' height='6'/%3E%3Crect fill='%23000080' x='8' y='18' width='16' height='2'/%3E%3C/svg%3E" alt="Contact">
+            <div class="icon-text">Contact</div>
         </div>
 
-        <div class="section">
-            <div class="section-title">// CURRENT</div>
-            <p>Working through K&R C Programming.</p>
-            <p>Building foundations before projects.</p>
-            <p>Back with work in ~6 months.</p>
+        <div class="icon" ondblclick="openWindow('projects')">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fff' x='4' y='8' width='24' height='18'/%3E%3Crect fill='%23000080' x='6' y='10' width='20' height='3'/%3E%3C/svg%3E" alt="Projects">
+            <div class="icon-text">Projects</div>
         </div>
 
-        <div class="section">
-            <div class="section-title">// PATH</div>
-            <p>C → Operating Systems → Distributed Systems</p>
+        <div class="icon" ondblclick="openWindow('reading')">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23808080' x='6' y='6' width='20' height='22'/%3E%3Crect fill='%23fff' x='8' y='8' width='16' height='18'/%3E%3C/svg%3E" alt="Reading">
+            <div class="icon-text">Reading</div>
         </div>
 
-        <div class="section">
-            <div class="section-title">// LINKS</div>
-            <div class="links">
-                <a href="https://github.com/greatm3" target="_blank">github.com/greatm3</a>
-                <a href="https://x.com/0x_greatm3" target="_blank">x.com/0x_greatm3</a>
-                <a href="mailto:hey@greatm3.tech">hey@greatm3.tech</a>
+        <div class="icon" ondblclick="openWindow('guestbook')">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fff' x='6' y='6' width='20' height='20'/%3E%3Crect fill='%23000' x='10' y='10' width='12' height='1'/%3E%3Crect fill='%23000' x='10' y='14' width='12' height='1'/%3E%3Crect fill='%23000' x='10' y='18' width='8' height='1'/%3E%3C/svg%3E" alt="Guestbook">
+            <div class="icon-text">Guestbook</div>
+        </div>
+    </div>
+
+    <!-- Contact Window -->
+    <div class="window" id="contact-window">
+        <div class="title-bar" onmousedown="startDrag(event, 'contact-window')">
+            <div class="title-bar-text">Great Ezenna - Contact</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('contact-window')">×</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="contact-header">
+                <img src="https://pbs.twimg.com/profile_images/2008991338230910976/vstSvlVQ_400x400.jpg" alt="Great Ezenna" class="profile-pic">
+                <div>
+                    <div class="contact-name">Great Ezenna</div>
+                    <div class="contact-title">Math Undergrad @ UNN</div>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-label">Focus:</div>
+                <div class="field-value">Math & Computation</div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-label">Skills:</div>
+                <div class="field-value">C, Python, TypeScript, Node.js</div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-label">GitHub:</div>
+                <div class="field-value"><a href="https://github.com/greatm3" target="_blank">github.com/greatm3</a></div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-label">X:</div>
+                <div class="field-value"><a href="https://x.com/0x_greatm3" target="_blank">x.com/0x_greatm3</a></div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-label">Email:</div>
+                <div class="field-value"><a href="/cdn-cgi/l/email-protection#4e26270e293c2b2f3a237d603a2b2d26"><span class="__cf_email__" data-cfemail="1b73725b7c697e7a6f7628356f7e7873">[email&#160;protected]</span></a></div>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <button class="button" onclick="window.open('https://github.com/greatm3', '_blank')">GitHub</button>
+                <button class="button" onclick="window.open('https://x.com/0x_greatm3', '_blank')">X</button>
+                <button class="button" onclick="window.location.href='mailto:hi@greatm3.tech'">Email</button>
             </div>
         </div>
     </div>
+
+    <!-- Projects Window -->
+    <div class="window" id="projects-window">
+        <div class="title-bar" onmousedown="startDrag(event, 'projects-window')">
+            <div class="title-bar-text">Projects</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('projects-window')">×</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="project-item">
+                <div class="project-title">HTTP from Scratch</div>
+                <div>Barebones HTTP/1.1 server built with raw TCP sockets using Node.js net module</div>
+                <div style="margin-top: 4px;"><a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank">View on GitHub</a></div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Auth API</div>
+                <div>User authentication API with JWT tokens, built with Express, TypeScript, and PostgreSQL</div>
+                <div style="margin-top: 4px;"><a href="https://github.com/greatm3/auth-api" target="_blank">View on GitHub</a></div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Blog API</div>
+                <div>Blog platform with authentication, CRUD operations, authorization, pagination, and search</div>
+                <div style="margin-top: 4px;"><a href="https://github.com/greatm3/blog-api" target="_blank">View on GitHub</a></div>
+            </div>
+
+            <div style="margin-top: 8px; padding: 8px; background: #ffffcc; border: 1px solid #808080; font-size: 10px;">
+                <strong>Coming soon:</strong> C and Python systems programming projects
+            </div>
+        </div>
+    </div>
+
+    <!-- Reading Window -->
+    <div class="window" id="reading-window">
+        <div class="title-bar" onmousedown="startDrag(event, 'reading-window')">
+            <div class="title-bar-text">Currently Reading</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('reading-window')">×</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="project-item">
+                <div class="project-title">The C Programming Language</div>
+                <div>by Brian Kernighan & Dennis Ritchie</div>
+                <div style="margin-top: 4px; font-style: italic;">The classic K&R C book - learning systems programming fundamentals</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Computer Systems: A Programmer's Perspective</div>
+                <div>by Randal Bryant & David O'Hallaron</div>
+                <div style="margin-top: 4px; font-style: italic;">Deep dive into how computer systems work from the ground up</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Math Coursework</div>
+                <div>Undergraduate mathematics at UNN</div>
+                <div style="margin-top: 4px; font-style: italic;">Building mathematical foundations for computation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guestbook Window -->
+    <div class="window" id="guestbook-window">
+        <div class="title-bar" onmousedown="startDrag(event, 'guestbook-window')">
+            <div class="title-bar-text">Guestbook</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('guestbook-window')">×</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <form id="guestbookForm" onsubmit="submitGuestbook(event)">
+                <input type="text" name="name" id="guestName" placeholder="Your name" required>
+                <input type="email" name="email" id="guestEmail" placeholder="Your email (optional)">
+                <textarea name="message" id="guestMessage" rows="3" placeholder="Leave a message..." required></textarea>
+                <button type="submit" class="button">Sign Guestbook</button>
+            </form>
+            <div style="margin-top: 12px; padding: 8px; background: #ffffcc; border: 1px solid #808080; font-size: 10px;">
+                <strong>Note:</strong> Messages are sent to my email. I'll see your message!
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" onclick="openWindow('contact')">Open Contact</div>
+        <div class="context-menu-item" onclick="openWindow('projects')">View Projects</div>
+        <div class="context-menu-item" onclick="openWindow('reading')">What I'm Reading</div>
+        <div class="context-menu-item" onclick="openWindow('guestbook')">Sign Guestbook</div>
+        <div class="context-menu-item" onclick="window.open('https://github.com/greatm3', '_blank')">GitHub Profile</div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="start-button">
+            <strong>Start</strong>
+        </div>
+        <div class="taskbar-divider"></div>
+        <div id="taskbarButtons"></div>
+        <div class="taskbar-clock" id="clock"></div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        let draggedWindow = null;
+        let offsetX = 0;
+        let offsetY = 0;
+        let highestZ = 100;
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12 || 12;
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            document.getElementById('clock').textContent = `${hours}:${minutes} ${ampm}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function openWindow(windowName) {
+            const win = document.getElementById(windowName + '-window');
+            if (win.style.display === 'block') {
+                focusWindow(windowName + '-window');
+                return;
+            }
+            
+            win.style.display = 'block';
+            if (!win.style.left) {
+                win.style.left = (50 + Math.random() * 100) + 'px';
+                win.style.top = (50 + Math.random() * 100) + 'px';
+            }
+            focusWindow(windowName + '-window');
+            updateTaskbar();
+        }
+
+        function closeWindow(windowId) {
+            document.getElementById(windowId).style.display = 'none';
+            updateTaskbar();
+        }
+
+        function focusWindow(windowId) {
+            document.querySelectorAll('.window').forEach(w => w.classList.remove('active'));
+            const win = document.getElementById(windowId);
+            win.classList.add('active');
+            win.style.zIndex = ++highestZ;
+        }
+
+        function startDrag(e, windowId) {
+            draggedWindow = document.getElementById(windowId);
+            focusWindow(windowId);
+            const rect = draggedWindow.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDrag);
+        }
+
+        function drag(e) {
+            if (draggedWindow) {
+                draggedWindow.style.left = (e.clientX - offsetX) + 'px';
+                draggedWindow.style.top = (e.clientY - offsetY) + 'px';
+            }
+        }
+
+        function stopDrag() {
+            draggedWindow = null;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+
+        function updateTaskbar() {
+            const taskbarButtons = document.getElementById('taskbarButtons');
+            taskbarButtons.innerHTML = '';
+            
+            document.querySelectorAll('.window').forEach(win => {
+                if (win.style.display === 'block') {
+                    const btn = document.createElement('div');
+                    btn.className = 'taskbar-button';
+                    if (win.classList.contains('active')) btn.classList.add('active');
+                    btn.textContent = win.querySelector('.title-bar-text').textContent;
+                    btn.onclick = () => focusWindow(win.id);
+                    taskbarButtons.appendChild(btn);
+                }
+            });
+        }
+
+        // Context menu
+        document.getElementById('desktop').addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const menu = document.getElementById('contextMenu');
+            menu.style.left = e.clientX + 'px';
+            menu.style.top = e.clientY + 'px';
+            menu.style.display = 'block';
+        });
+
+        document.addEventListener('click', () => {
+            document.getElementById('contextMenu').style.display = 'none';
+        });
+
+        // Guestbook submission
+        async function submitGuestbook(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('https://formspree.io/f/xlgwjvez', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert('Message sent! Thanks for signing the guestbook.');
+                    document.getElementById('guestName').value = '';
+                    document.getElementById('guestEmail').value = '';
+                    document.getElementById('guestMessage').value = '';
+                } else {
+                    alert('Oops! There was a problem sending your message.');
+                }
+            } catch (error) {
+                alert('Oops! There was a problem sending your message.');
+            }
+        }
+
+        // Icon selection
+        document.querySelectorAll('.icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                if (e.detail === 1) {
+                    document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+                    icon.classList.add('selected');
+                }
+            });
+        });
+
+        // Window clicks
+        document.querySelectorAll('.window').forEach(win => {
+            win.addEventListener('mousedown', () => focusWindow(win.id));
+        });
+
+        // Auto-open contact window on page load
+        window.addEventListener('load', () => {
+            openWindow('contact');
+        });
+    </script>
 </body>
 </html>
