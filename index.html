@@ -16,8 +16,9 @@
       * { margin: 0; padding: 0; box-sizing: border-box; }
 
       html, body {
-        width: 100%; height: 100%;
-        overflow: hidden;
+        width: 100%;
+        height: auto;
+        overflow: auto;
       }
 
       body {
@@ -25,75 +26,6 @@
         font-family: 'DM Sans', sans-serif;
       }
 
-      #intro {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--black);
-      }
-
-      #big-btn {
-        width: 50%;
-        height: 50%;
-        background: var(--black);
-        border: none;
-        cursor: pointer;
-        font-family: 'DM Mono', monospace;
-        font-size: clamp(20px, 5vw, 52px);
-        font-weight: 400;
-        color: var(--white);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.1s;
-        outline: none;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      #big-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: var(--white);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.6s cubic-bezier(0.77,0,0.18,1);
-        z-index: 0;
-      }
-
-      #big-btn:hover::before {
-        transform: scaleX(1);
-      }
-
-      #big-btn:hover {
-        color: var(--black);
-      }
-
-      #big-btn .btn-text {
-        position: relative;
-        z-index: 1;
-      }
-      
-      @keyframes borderPulse {
-        0%, 100% { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08); }
-        50%       { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.22); }
-      }
-
-      #big-btn { animation: borderPulse 2.5s ease infinite; }
-      
-      #flash {
-        position: fixed;
-        inset: 0;
-        z-index: 999;
-        pointer-events: none;
-        opacity: 0;
-      }
-
-      
       #portfolio {
         background: var(--white);
         color: var(--black);
@@ -102,14 +34,9 @@
         align-items: center;
         justify-content: center;
         padding: 48px 24px;
-        opacity: 0;
+        opacity: 1;
         overflow-y: auto;
         overflow-x: hidden;
-      }
-
-      html.revealed, html.revealed body {
-        overflow: auto;
-        height: auto;
       }
 
       .container {
@@ -231,6 +158,7 @@
       }
 
       .currently { padding: 24px 0; border-bottom: 1px solid var(--border); }
+      .projects { padding: 24px 0; border-bottom: 1px solid var(--border); }
 
       .section-label {
         font-family: 'DM Mono', monospace;
@@ -276,6 +204,83 @@
       }
 
       .item:hover::after { transform: scaleX(1); }
+
+      
+      .project-item {
+        display: block;
+        padding: 14px 0;
+        border-top: 1px solid var(--border);
+        text-decoration: none;
+        color: var(--black);
+        position: relative;
+      }
+
+      .project-item:first-child { border-top: none; }
+
+      .project-item::after {
+        content: '';
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 1px;
+        background: var(--black);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s cubic-bezier(0.77,0,0.18,1);
+      }
+
+      .project-item:hover::after { transform: scaleX(1); }
+
+      .project-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+
+      .project-name {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      .project-arrow {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        color: var(--mid);
+        transition: transform 0.25s cubic-bezier(0.77,0,0.18,1);
+        flex-shrink: 0;
+      }
+
+      .project-item:hover .project-arrow {
+        transform: translate(3px, -3px);
+        color: var(--black);
+      }
+
+      .project-desc {
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.5;
+        margin-top: 4px;
+        max-width: 460px;
+      }
+
+      .project-stack {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .stack-tag {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--mid);
+        padding: 2px 6px;
+        border: 1px solid var(--border);
+      }
 
       .links {
         padding: 24px 0 0;
@@ -331,18 +336,12 @@
     </style>
   </head>
   <body>
-    <div id="flash"></div>
-    <div id="intro">
-      <button id="big-btn" onclick="triggerReveal()">
-        <span class="btn-text">Big Black Button</span>
-      </button>
-    </div>
     <div id="portfolio">
       <div class="container">
         <div class="piece" id="p-topbar">
           <div class="topbar">
             <span class="topbar-left">greatm3.tech</span>
-            <span class="topbar-right">Lagos, NG &nbsp;·&nbsp; 2026</span>
+            <span class="topbar-right">Enugu, NG &nbsp;·&nbsp; 2026</span>
           </div>
         </div>
         <div class="piece" id="p-profile">
@@ -355,6 +354,7 @@
               <div class="handle">@0x_greatm3</div>
               <div class="tags">
                 <span class="tag">Mathematics</span>
+                <span class="tag">Backend / Systems</span>
                 <span class="tag">UNN</span>
                 <span class="tag">100L</span>
               </div>
@@ -373,6 +373,66 @@
               <li class="item"><span class="item-num">01</span><span>Telling my PC stuff</span></li>
               <li class="item"><span class="item-num">02</span><span>Mathematics</span></li>
               <li class="item"><span class="item-num">03</span><span>Figuring it out</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="piece" id="p-projects">
+          <div class="projects">
+            <div class="section-label">Projects</div>
+            <ul class="item-list">
+              <li>
+                <a class="project-item" href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" rel="noopener">
+                  <div class="project-head">
+                    <span class="project-name">HTTP-from-scratch</span>
+                    <span class="project-arrow">↗</span>
+                  </div>
+                  <div class="project-desc">A barebones HTTP/1.1 server built only with raw TCP sockets.</div>
+                  <div class="project-stack">
+                    <span class="stack-tag">Node.js net</span>
+                    <span class="stack-tag">TypeScript</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="project-item" href="https://github.com/greatm3/auth-api" target="_blank" rel="noopener">
+                  <div class="project-head">
+                    <span class="project-name">auth-api</span>
+                    <span class="project-arrow">↗</span>
+                  </div>
+                  <div class="project-desc">User authentication API with JWT tokens.</div>
+                  <div class="project-stack">
+                    <span class="stack-tag">Express</span>
+                    <span class="stack-tag">TypeScript</span>
+                    <span class="stack-tag">PostgreSQL</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="project-item" href="https://github.com/greatm3/blog-api" target="_blank" rel="noopener">
+                  <div class="project-head">
+                    <span class="project-name">blog-api</span>
+                    <span class="project-arrow">↗</span>
+                  </div>
+                  <div class="project-desc">A blog/articles platform with authentication, CRUD, authorization, pagination, and search.</div>
+                  <div class="project-stack">
+                    <span class="stack-tag">TypeScript</span>
+                    <span class="stack-tag">Redis</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="project-item" href="https://github.com/greatm3/rust-practice" target="_blank" rel="noopener">
+                  <div class="project-head">
+                    <span class="project-name">rust-practice</span>
+                    <span class="project-arrow">↗</span>
+                  </div>
+                  <div class="project-desc">My journey learning Rust — exercises and challenges, mostly custom.</div>
+                  <div class="project-stack">
+                    <span class="stack-tag">Rust</span>
+                  </div>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -402,11 +462,12 @@
         { x: -160, y:  80,  r:  -8 }, 
         { x:  200, y:  120, r:  10 },  
         { x: -100, y:  220, r: -12 },  
+        { x:  140, y:  260, r:   9 },
         { x:  120, y:  250, r:   8 },  
       ];
 
       const pieces = [
-        'p-topbar','p-profile','p-bio','p-currently','p-links','p-footer'
+        'p-topbar','p-profile','p-bio','p-currently','p-projects','p-links','p-footer'
       ];
 
       pieces.forEach((id, i) => {
@@ -416,71 +477,16 @@
         el.style.opacity = '0';
       });
 
-      function triggerReveal() {
-        const btn = document.getElementById('big-btn');
-        const intro = document.getElementById('intro');
-        const flash = document.getElementById('flash');
-        const portfolio = document.getElementById('portfolio');
-
-        btn.onclick = null;
-        btn.style.cursor = 'default';
-        btn.style.transition = 'none';
-        btn.style.background = '#fff';
-        btn.style.color = '#000';
-
-        setTimeout(() => {
-          intro.style.transition = 'opacity 0.2s ease, transform 0.4s cubic-bezier(0.77,0,0.18,1)';
-          intro.style.opacity = '0';
-          intro.style.transform = 'scale(1.06)';
-        }, 80);
-
-        setTimeout(() => {
-          intro.style.display = 'none';
-
-          const colors = ['#ff0000', '#00cc00', '#0000ff', '#ff0000', '#00cc00'];
-          let i = 0;
-
-          function flick() {
-            if (i >= colors.length) {
-              flash.style.opacity = '0';
-              flash.style.transition = 'opacity 0.15s';
-
-              portfolio.style.opacity = '1';
-              document.documentElement.classList.add('revealed');
-
-              pieces.forEach((id, idx) => {
-                const el = document.getElementById(id);
-                setTimeout(() => {
-                  el.style.transition = `transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease`;
-                  el.style.transform = 'translate(0, 0) rotate(0deg)';
-                  el.style.opacity = '1';
-                }, idx * 90);
-              });
-              return;
-            }
-
-            flash.style.transition = 'none';
-            flash.style.background = colors[i];
-            flash.style.opacity = '0.85';
-
-            setTimeout(() => {
-              flash.style.transition = 'opacity 0.06s';
-              flash.style.opacity = '0';
-              i++;
-              setTimeout(flick, 70);
-            }, 60);
-          }
-
-          flick();
-
-        }, 350);
-      }
+      window.addEventListener('DOMContentLoaded', () => {
+        pieces.forEach((id, idx) => {
+          const el = document.getElementById(id);
+          setTimeout(() => {
+            el.style.transition = `transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease`;
+            el.style.transform = 'translate(0, 0) rotate(0deg)';
+            el.style.opacity = '1';
+          }, idx * 90);
+        });
+      });
     </script>
   </body>
 </html>
-
-
-
-
-
-
