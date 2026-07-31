@@ -58,18 +58,19 @@
         transform: scale(1);
       }
 
+      /* Strict 4x2 Grid ensuring zero uneven white spaces */
       .bento-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);  
         gap: 2px; 
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
       }
 
       .bento-card {
         background: var(--white);
-        padding: 2rem;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -88,27 +89,27 @@
       .card-square { grid-column: span 1; grid-row: span 1; }
       
       .hero-title {
-        font-size: clamp(32px, 5vw, 64px);
+        font-size: clamp(28px, 4vw, 56px);
         font-weight: 900;
         line-height: 1;
         letter-spacing: -0.03em;
         text-transform: uppercase;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
       
       .hero-subtitle {
         font-family: 'DM Mono', monospace;
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing: 0.1em;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
         text-transform: uppercase;
       }
       
       .hero-bio {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         line-height: 1.4;
-        max-width: 90%;
+        max-width: 95%;
       }
       
       .hero-bio a {
@@ -129,11 +130,11 @@
       .photo-overlay {
         position: absolute;
         bottom: 0; left: 0; right: 0;
-        padding: 24px;
+        padding: 20px;
         background: var(--black);
         color: var(--white);
         font-family: 'DM Mono', monospace;
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
@@ -142,47 +143,65 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
       }
       .proj-title {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: -0.02em;
       }
-      .proj-arrow {
-        font-family: 'DM Mono', monospace;
-        font-size: 20px;
-        transition: transform 0.2s;
-      }
-      a.bento-card:hover .proj-arrow { transform: translate(4px, -4px); }
-      .proj-desc {
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 1.5;
-        margin-bottom: auto;
-      }
-      .tags {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 24px;
-      }
-      .tag {
+      .proj-repo {
         font-family: 'DM Mono', monospace;
         font-size: 11px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      a.bento-card:hover .proj-repo { color: var(--white); }
+      
+      .proj-desc {
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.35;
+        margin-bottom: auto;
+      }
+      .tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .tag {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         border: 1px solid var(--black);
-        padding: 4px 10px;
+        padding: 2px 6px;
         transition: border-color 0.2s;
       }
       a.bento-card:hover .tag { border-color: var(--white); }
 
       .contact-card { justify-content: center; align-items: center; text-align: center; }
-      .email-link { font-family: 'DM Mono', monospace; font-size: 14px; display: block; margin: 8px 0; }
+      .email-link { font-family: 'DM Mono', monospace; font-size: 12px; display: block; margin: 4px 0; }
       .email-link:hover { text-decoration: underline; text-underline-offset: 4px; }
       
+      .btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background: var(--black);
+        color: var(--white);
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: background 0.2s, color 0.2s;
+      }
+      .btn:hover { background: var(--white); color: var(--black); border: 1px solid var(--black); }
+
       .nav-card {
         justify-content: center;
         align-items: center;
@@ -191,13 +210,12 @@
         cursor: pointer;
       }
       .nav-card:hover { background: var(--white); color: var(--black); }
-      .nav-text { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
-      .nav-icon { font-size: 40px; margin-top: 8px; transition: transform 0.2s; }
-      .nav-down:hover .nav-icon { transform: translateY(8px); }
-      .nav-up:hover .nav-icon { transform: translateY(-8px); }
+      .nav-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+      .nav-icon { font-size: 32px; margin-top: 4px; transition: transform 0.2s; }
+      .nav-down:hover .nav-icon { transform: translateY(6px); }
       
       .projects-title-card { background: var(--black); color: var(--white); justify-content: center; }
-      .projects-header { font-size: 48px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+      .projects-header { font-size: 36px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
 
       @media (max-width: 1024px) {
         body { scroll-snap-type: none; height: auto; overflow-y: auto; }
@@ -205,9 +223,9 @@
         .bento-container {
           grid-template-columns: repeat(2, 1fr);
           grid-template-rows: auto;
-          grid-auto-rows: minmax(300px, auto);
+          height: auto;
         }
-        .card-hero { grid-column: span 2; grid-row: span 2; }
+        .card-hero { grid-column: span 2; grid-row: span 1; }
         .card-tall { grid-column: span 1; grid-row: span 2; }
         .card-wide { grid-column: span 2; grid-row: span 1; }
         .card-square { grid-column: span 1; grid-row: span 1; }
@@ -216,12 +234,13 @@
       @media (max-width: 600px) {
         .bento-container { grid-template-columns: 1fr; }
         .card-hero, .card-tall, .card-wide, .card-square { grid-column: span 1; grid-row: auto; }
-        .card-tall { min-height: 400px; }
+        .card-tall { min-height: 350px; }
       }
     </style>
   </head>
   <body>
 
+    <!-- PAGE 1: HERO, BIO, PHOTO & CONTACT -->
     <div id="home" class="section">
       <div class="fade-wrapper bento-container">
         
@@ -241,16 +260,18 @@
         <div class="bento-card card-square contact-card">
           <a href="mailto:ezennagreat@gmail.com" class="email-link">ezennagreat@gmail.com</a>
           <a href="mailto:great.ezenna.298051@unn.edu.ng" class="email-link">great.ezenna.298051@unn.edu.ng</a>
+          <a href="https://github.com/greatm3" target="_blank" class="btn">GitHub (@greatm3)</a>
         </div>
 
         <a href="#projects" class="bento-card card-square nav-card nav-down">
-          <span class="nav-text">View Projects</span>
+          <span class="nav-text">Projects</span>
           <span class="nav-icon">↓</span>
         </a>
 
       </div>
     </div>
 
+    <!-- PAGE 2: PROJECTS -->
     <div id="projects" class="section">
       <div class="fade-wrapper bento-container">
         
@@ -261,24 +282,19 @@
         <a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" class="bento-card card-wide">
           <div class="proj-head">
             <span class="proj-title">HTTP-from-scratch</span>
-            <span class="proj-arrow">↗</span>
+            <span class="proj-repo">repo</span>
           </div>
-          <p class="proj-desc">A barebones HTTP/1.1 server built with nothing(no http packages) but raw TCP sockets — no framework in between. Parses request lines and writes valid responses byte by byte.</p>
+          <p class="proj-desc">A barebones HTTP/1.1 server built with raw TCP sockets — no framework in between. Parses request lines and writes valid responses byte by byte.</p>
           <div class="tags">
             <span class="tag">Node.js</span>
             <span class="tag">TypeScript</span>
           </div>
         </a>
 
-        <a href="#home" class="bento-card card-square nav-card nav-up">
-          <span class="nav-text">Back to Top</span>
-          <span class="nav-icon">↑</span>
-        </a>
-
         <a href="https://github.com/greatm3/auth-api" target="_blank" class="bento-card card-square">
           <div class="proj-head">
             <span class="proj-title">auth-api</span>
-            <span class="proj-arrow">↗</span>
+            <span class="proj-repo">repo</span>
           </div>
           <p class="proj-desc">User authentication API issuing and verifying JWT tokens with protected routes.</p>
           <div class="tags">
@@ -290,7 +306,7 @@
         <a href="https://github.com/greatm3/rust-practice" target="_blank" class="bento-card card-square">
           <div class="proj-head">
             <span class="proj-title">rust-practice</span>
-            <span class="proj-arrow">↗</span>
+            <span class="proj-repo">repo</span>
           </div>
           <p class="proj-desc">My ongoing log while learning Rust.</p>
           <div class="tags">
@@ -301,7 +317,7 @@
         <a href="https://github.com/greatm3/blog-api" target="_blank" class="bento-card card-square">
           <div class="proj-head">
             <span class="proj-title">blog-api</span>
-            <span class="proj-arrow">↗</span>
+            <span class="proj-repo">repo</span>
           </div>
           <p class="proj-desc">Full CRUD blog platform with auth rules and Redis caching for hot reads.</p>
           <div class="tags">
