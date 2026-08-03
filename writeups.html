@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Field reports and write-ups by Great Ezenna — notes from building and breaking things."
+    />
+    <meta property="og:title" content="Writeups — The Ezenna Review" />
+    <meta
+      property="og:description"
+      content="Field reports and write-ups on building and breaking things."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f2ede3" />
+    <title>Writeups — The Ezenna Review</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="page inner">
+        <div class="masthead-top">
+          <span class="edition">Vol. I · No. 01</span>
+          <span>The Archive</span>
+          <span class="edition">Nsukka, NG</span>
+        </div>
+        <div class="masthead-title">The Ezenna Review</div>
+        <nav class="navbar">
+          <a href="index.html#home">Front Page</a>
+          <a href="index.html#work">Selected Work</a>
+          <a href="writeups.html">Writeups</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page inner">
+      <section id="writeups">
+        <div class="sec-head">
+          <span class="sec-no">§ A</span>
+          <h2 class="sec-title">Writeups &amp; Field Reports</h2>
+          <span class="sec-meta">The Archive</span>
+        </div>
+
+        <p class="writeups-intro">
+          Longer notes on things I've built and broken — what I set out to
+          learn, and what actually happened along the way.
+        </p>
+
+        <div class="writeup-list">
+          <a class="writeup" href="http-from-scratch.html">
+            <span class="writeup-no">01</span>
+            <div class="writeup-main">
+              <h3 class="writeup-title">Building an HTTP Server the Hard Way</h3>
+              <p class="writeup-dek">
+                An HTTP/1.1 server written from raw TCP sockets — no framework in
+                between. What the wire taught me about chunks, framing, and the
+                interfaces we take for granted.
+              </p>
+              <div class="writeup-tags">
+                <span class="work-tag">Node.js</span
+                ><span class="work-tag">TypeScript</span
+                ><span class="work-tag">Systems</span>
+              </div>
+            </div>
+            <span class="writeup-read">Read →</span>
+          </a>
+        </div>
+
+        <p class="writeups-more">More reports filed as they happen.</p>
+      </section>
+
+      <footer>
+        <hr class="foot-rule" />
+        <p>
+          The Ezenna Review · No. 01 <span class="dot">◆</span> ©
+          <span id="year">2026</span> Great Ezenna <span class="dot">◆</span>
+          <a href="index.html#home">Return to Front Page ↑</a>
+        </p>
+        <p>
+          Set in Fraunces &amp; Newsreader · Printed on the open web · No
+          frameworks harmed
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

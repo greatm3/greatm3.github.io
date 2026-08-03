@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Building an HTTP/1.1 server from raw TCP sockets — no framework in between. A field report by Great Ezenna."
+    />
+    <meta
+      property="og:title"
+      content="Building an HTTP Server the Hard Way — The Ezenna Review"
+    />
+    <meta
+      property="og:description"
+      content="What I learned writing an HTTP/1.1 server from raw TCP sockets — no framework in between."
+    />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#f2ede3" />
+    <title>Building an HTTP Server the Hard Way — The Ezenna Review</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="page inner">
+        <div class="masthead-top">
+          <span class="edition">Vol. I · No. 01</span>
+          <span>Feature Story</span>
+          <span class="edition">Nsukka, NG</span>
+        </div>
+        <div class="masthead-title">The Ezenna Review</div>
+        <nav class="navbar">
+          <a href="index.html#home">Front Page</a>
+          <a href="index.html#work">Selected Work</a>
+          <a href="writeups.html">Writeups</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page inner">
+      <article class="article">
+        <p class="kicker article-kicker">§ 01 — Selected Work · A Field Report</p>
+        <h1 class="article-title">Building an HTTP Server the Hard Way</h1>
+        <p class="article-standfirst">
+          An HTTP/1.1 server written from raw TCP sockets — no Express, no
+          framework in between. What I set out to learn, and what the wire
+          taught me back.
+        </p>
+        <div class="article-byline">
+          <span>By <b>Great Ezenna</b></span>
+          <span>Node.js · <b>TypeScript</b></span>
+          <span>Filed under: <b>Systems</b></span>
+          <a
+            class="article-source"
+            href="https://github.com/greatm3/HTTP-from-scratch"
+            target="_blank"
+            rel="noopener"
+            >Read the source →</a
+          >
+        </div>
+
+        <hr class="article-rule" />
+
+        <div class="article-body">
+          <p class="lead">
+            I did not build this because the world needed another web server. I
+            built it because I wanted to know what happens under the frameworks
+            I use every day — what an HTTP request actually is once you strip
+            away everything that hides it. So I opened Node's <code>net</code>
+            module, gave myself a raw TCP socket, and nothing else.
+          </p>
+
+          <p>
+            The rule I set was simple: no framework in between. The server
+            listens on a socket, reads bytes off the wire, and turns them into
+            something meaningful entirely by hand. It parses the request line
+            and headers with regular expressions, splits the path from its query
+            string, decodes JSON and form-encoded bodies, and writes a valid
+            HTTP/1.1 response back out — status line, headers, blank line, body
+            — byte by byte.
+          </p>
+
+          <h2 class="article-h2">The lesson that arrives in pieces</h2>
+          <p>
+            The thing that surprised me most was also the most fundamental:
+            <b>TCP does not hand you a whole message.</b> I had quietly assumed
+            that one request would arrive as one neat chunk of data. It doesn't.
+            A socket is a stream of bytes, and those bytes arrive whenever the
+            network feels like delivering them — a header here, half a body
+            there, the rest a moment later.
+          </p>
+          <p>
+            So the server can't just react to every <code>data</code> event as
+            if it were complete. It has to buffer what it's received and keep
+            asking a quieter question: <i>do I have a whole request yet?</i>
+            For now I answer that by watching for the <code>\r\n\r\n</code> that
+            marks the end of the headers before I try to parse anything. Getting
+            that wrong means replying to half a request — and getting it right
+            is the difference between reading a protocol and merely reading
+            about one.
+          </p>
+
+          <h2 class="article-h2">Building it like Node builds it</h2>
+          <p>
+            I could have kept the interface primitive — pass strings around, be
+            done with it. Instead I modeled it on Node's own <code>http</code>
+            module. The request object extends <code>Readable</code>, the
+            response extends <code>Writable</code>, and the server is an
+            <code>EventEmitter</code> that emits a <code>request</code> event —
+            so you can write
+            <code>server.on("request", (req, res) =&gt; …)</code> exactly the
+            way you would with the real thing.
+          </p>
+          <p>
+            That was deliberate. I wanted to learn the actual interface — the
+            shape professional tools present to you — not a toy version of it.
+            And, honestly, I liked it. There is a particular satisfaction in
+            calling <code>res.setHeader()</code> and
+            <code>res.write()</code> on something you built from a bare socket,
+            and having it behave the way the library you copied does.
+          </p>
+
+          <h2 class="article-h2">What the wire made me handle</h2>
+          <p>
+            Working this close to the protocol turns abstractions back into
+            problems you can see. A client can send an enormous body, so the
+            server tracks the total bytes received and answers oversized
+            requests with <code>413 Payload Too Large</code> instead of
+            swallowing them. A connection might ask to stay open or to close, so
+            it reads the <code>Connection</code> header and honours keep-alive
+            or hangs up accordingly. A browser can vanish mid-request, so it
+            catches <code>ECONNRESET</code> and treats a disappearing client as
+            ordinary, not exceptional.
+          </p>
+
+          <h2 class="article-h2">Where it stands</h2>
+          <p>
+            I consider this done — as a learning artifact. It parses requests,
+            routes methods, reads bodies and query strings, and writes correct
+            responses, and along the way it taught me the thing I came for. I
+            keep an honest checklist of what a production-grade server would
+            still need: framing bodies by <code>Content-Length</code> rather
+            than trusting <code>\r\n\r\n</code>, chunked transfer encoding,
+            stricter connection handling. I may come back and work through it. I
+            may not. Either way, I no longer use a web framework without a
+            picture of what it's doing on my behalf — and that was always the
+            point.
+          </p>
+        </div>
+
+        <div class="article-foot">
+          <a
+            class="article-source big"
+            href="https://github.com/greatm3/HTTP-from-scratch"
+            target="_blank"
+            rel="noopener"
+            >Read the full source on GitHub →</a
+          >
+          <a class="article-back" href="index.html#work"
+            >← Back to Selected Work</a
+          >
+        </div>
+      </article>
+
+      <footer>
+        <hr class="foot-rule" />
+        <p>
+          The Ezenna Review · No. 01 <span class="dot">◆</span> ©
+          <span id="year">2026</span> Great Ezenna <span class="dot">◆</span>
+          <a href="index.html#home">Return to Front Page ↑</a>
+        </p>
+        <p>
+          Set in Fraunces &amp; Newsreader · Printed on the open web · No
+          frameworks harmed
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
