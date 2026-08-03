@@ -3,346 +3,579 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Great Ezenna | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,300&display=swap" rel="stylesheet" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="Great Ezenna — 18 y/o mathematics student and systems tinkerer. Building and breaking things, currently diving deep into Rust." />
+    <meta property="og:title" content="The Ezenna Review — Great Ezenna" />
+    <meta property="og:description" content="18 y/o mathematics student. Building and breaking things, currently diving deep into Rust." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f2ede3" />
+    <title>The Ezenna Review — Great Ezenna</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --black: #000000;
-        --white: #ffffff;
+        --paper: #f2ede3;
+        --paper-2: #ebe4d6;
+        --ink: #141414;
+        --ink-soft: #3a352d;
+        --muted: #6f695c;
+        --stamp: #e03c31;
+        --line-faint: rgba(20, 20, 20, 0.14);
+        --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+        --body: 'Newsreader', Georgia, serif;
+        --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
       }
 
-      * { 
-        margin: 0; 
-        padding: 0; 
-        box-sizing: border-box; 
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 165px;
+        -webkit-text-size-adjust: 100%;
+      }
 
       body {
-        background: var(--black);
-        color: var(--black);
-        font-family: 'DM Sans', sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 18px;
+        line-height: 1.55;
         -webkit-font-smoothing: antialiased;
-        height: 100vh;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
+        -webkit-tap-highlight-color: rgba(224, 60, 49, 0.18);
         overflow-x: hidden;
+        background-image:
+          radial-gradient(rgba(20, 20, 20, 0.028) 1px, transparent 1px),
+          radial-gradient(rgba(20, 20, 20, 0.022) 1px, transparent 1px);
+        background-size: 4px 4px, 7px 7px;
+        background-position: 0 0, 2px 3px;
       }
+
+      ::selection { background: var(--stamp); color: var(--paper); }
 
       a { color: inherit; text-decoration: none; }
-      
-      a:focus-visible {
-        outline: 2px solid var(--black);
-        outline-offset: -4px;
-      }
+      a:focus-visible { outline: 2px solid var(--stamp); outline-offset: 3px; }
 
-      .section {
-        height: 100vh;
-        width: 100vw;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        background: var(--black);
-      }
-
-      .fade-wrapper {
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transform: scale(0.98);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      
-      .fade-wrapper.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      .bento-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);  
-        gap: 2px; 
-        height: 100vh;
-        width: 100vw;
-      }
-
-      .bento-card {
-        background: var(--white);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.2s, color 0.2s;
-      }
-
-      a.bento-card:hover {
-        background: var(--black);
-        color: var(--white);
-      }
-
-      .card-hero { grid-column: span 2; grid-row: span 2; justify-content: flex-end; }
-      .card-tall { grid-column: span 1; grid-row: span 2; }
-      .card-wide { grid-column: span 2; grid-row: span 1; }
-      .card-square { grid-column: span 1; grid-row: span 1; }
-      
-      .hero-title {
-        font-size: clamp(28px, 4vw, 56px);
-        font-weight: 900;
-        line-height: 1;
-        letter-spacing: -0.03em;
+      .kicker {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-      
-      .hero-subtitle {
-        font-family: 'DM Mono', monospace;
-        font-size: 13px;
-        letter-spacing: 0.1em;
-        margin-bottom: 16px;
-        text-transform: uppercase;
-      }
-      
-      .hero-bio {
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.4;
-        max-width: 95%;
-      }
-      
-      .hero-bio a {
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 4px;
-      }
-      
-      .hero-bio a:hover { background: var(--black); color: var(--white); }
-
-      .photo-card { padding: 0; background: var(--black); }
-      .photo-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%) contrast(1.3);
-      }
-      .photo-overlay {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        padding: 20px;
-        background: var(--black);
-        color: var(--white);
-        font-family: 'DM Mono', monospace;
-        font-size: 13px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
+        color: var(--muted);
       }
 
-      .proj-head {
+      .page {
+        width: min(1140px, 92vw);
+        margin: 0 auto;
+        border-left: 1px solid var(--line-faint);
+        border-right: 1px solid var(--line-faint);
+      }
+      .inner { padding: 0 clamp(16px, 4vw, 46px); }
+
+      .masthead {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--paper);
+        border-bottom: 3px double var(--ink);
+      }
+      .masthead-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 8px;
-      }
-      .proj-title {
-        font-size: 18px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-      }
-      .proj-repo {
-        font-family: 'DM Mono', monospace;
+        align-items: center;
+        gap: 14px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line-faint);
+        font-family: var(--mono);
         font-size: 11px;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        text-decoration: underline;
-        text-underline-offset: 2px;
+        color: var(--muted);
       }
-      a.bento-card:hover .proj-repo { color: var(--white); }
-      
-      .proj-desc {
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.35;
-        margin-bottom: auto;
+      .masthead-title {
+        font-family: var(--serif);
+        font-weight: 900;
+        text-align: center;
+        letter-spacing: 0.02em;
+        font-size: clamp(22px, 5vw, 44px);
+        line-height: 1;
+        padding: 12px 0 6px;
       }
-      .tags {
+      .masthead-strap {
         display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-        margin-top: 10px;
-      }
-      .tag {
-        font-family: 'DM Mono', monospace;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        border: 1px solid var(--black);
-        padding: 2px 6px;
-        transition: border-color 0.2s;
-      }
-      a.bento-card:hover .tag { border-color: var(--white); }
-
-      .contact-card { justify-content: center; align-items: center; text-align: center; }
-      .email-link { font-family: 'DM Mono', monospace; font-size: 12px; display: block; margin: 4px 0; }
-      .email-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-      
-      .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 8px 16px;
-        background: var(--black);
-        color: var(--white);
-        font-family: 'DM Mono', monospace;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        transition: background 0.2s, color 0.2s;
-      }
-      .btn:hover { background: var(--white); color: var(--black); border: 1px solid var(--black); }
-
-      .nav-card {
         justify-content: center;
         align-items: center;
-        background: var(--black);
-        color: var(--white);
-        cursor: pointer;
+        gap: 12px;
+        padding-bottom: 10px;
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        flex-wrap: wrap;
       }
-      .nav-card:hover { background: var(--white); color: var(--black); }
-      .nav-text { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
-      .nav-icon { font-size: 32px; margin-top: 4px; transition: transform 0.2s; }
-      .nav-down:hover .nav-icon { transform: translateY(6px); }
-      
-      .projects-title-card { background: var(--black); color: var(--white); justify-content: center; }
-      .projects-header { font-size: 36px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+      .masthead-strap .dot { color: var(--stamp); }
 
-      @media (max-width: 1024px) {
-        body { scroll-snap-type: none; height: auto; overflow-y: auto; }
-        .section { height: auto; scroll-snap-align: none; }
-        .bento-container {
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: auto;
-          height: auto;
-        }
-        .card-hero { grid-column: span 2; grid-row: span 1; }
-        .card-tall { grid-column: span 1; grid-row: span 2; }
-        .card-wide { grid-column: span 2; grid-row: span 1; }
-        .card-square { grid-column: span 1; grid-row: span 1; }
+      .navbar {
+        border-top: 1px solid var(--line-faint);
+        display: flex;
+        justify-content: center;
+        gap: clamp(14px, 4vw, 40px);
+        padding: 8px 0;
+      }
+      .navbar a {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        padding: 2px 0;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .navbar a:hover { border-color: var(--stamp); color: var(--stamp); }
+
+      section { padding: clamp(40px, 7vw, 84px) 0; border-bottom: 1px solid var(--line-faint); }
+
+      .sec-head {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 34px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 10px;
+      }
+      .sec-no {
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--stamp);
+      }
+      .sec-title {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: clamp(22px, 4vw, 34px);
+        letter-spacing: -0.01em;
+        line-height: 1;
+        text-wrap: balance;
+      }
+      .sec-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+      .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 5vw, 60px); align-items: center; }
+      .hero-copy { min-width: 0; }
+
+      .hero-kicker { margin-bottom: 18px; }
+      .hero-name {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: clamp(3rem, 11vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+      }
+      .hero-name .amp { color: var(--stamp); }
+
+      .drop {
+        margin-top: 22px;
+        font-family: var(--body);
+        font-size: clamp(18px, 2.2vw, 22px);
+        line-height: 1.5;
+        max-width: 40ch;
+        color: var(--ink-soft);
+      }
+      .drop::first-letter {
+        float: left;
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 4.6em;
+        line-height: 0.72;
+        padding: 6px 12px 0 0;
+        color: var(--stamp);
+      }
+      .drop a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+      .drop a:hover { color: var(--stamp); }
+
+      .byline {
+        margin-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .byline b { color: var(--ink); font-weight: 700; }
+
+      .hero-art { display: flex; justify-content: center; }
+      .stamp-fig { position: relative; width: min(340px, 78vw); aspect-ratio: 1; animation: stampin 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+      .stamp-fig svg { width: 100%; height: 100%; }
+      @keyframes stampin { from { opacity: 0; transform: scale(1.25) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(-7deg); } }
+      .stamp-rotate { transform-origin: center; animation: seal-spin 44s linear infinite; }
+      @keyframes seal-spin { to { transform: rotate(360deg); } }
+      .seal-ring { fill: none; stroke: var(--stamp); }
+      .seal-text { fill: var(--stamp); font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.32em; font-weight: 700; }
+      .seal-mono {
+        fill: var(--stamp);
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 118px;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .stamp-cap {
+        position: absolute;
+        left: 50%;
+        bottom: -14px;
+        transform: translateX(-50%) rotate(-7deg);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        white-space: nowrap;
       }
 
-      @media (max-width: 600px) {
-        .bento-container { grid-template-columns: 1fr; }
-        .card-hero, .card-tall, .card-wide, .card-square { grid-column: span 1; grid-row: auto; }
-        .card-tall { min-height: 350px; }
+      .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line-faint); border: 1px solid var(--line-faint); }
+      .work {
+        display: block;
+        background: var(--paper);
+        padding: 26px 26px 28px;
+        position: relative;
+        transition: background 0.2s, color 0.2s;
+      }
+      .work:hover { background: var(--ink); color: var(--paper); }
+      .work-top { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+      .work-no { font-family: var(--serif); font-weight: 900; font-size: 30px; line-height: 1; color: var(--stamp); }
+      .work:hover .work-no { color: var(--paper); }
+      .work-title { font-family: var(--serif); font-weight: 600; font-size: 22px; line-height: 1.1; }
+      .work-read { margin-left: auto; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); opacity: 0; transition: opacity 0.2s; }
+      .work:hover .work-read { opacity: 1; color: var(--paper); }
+      .work-desc { font-size: 16px; line-height: 1.5; color: var(--ink-soft); max-width: 46ch; }
+      .work:hover .work-desc { color: var(--paper-2); }
+      .work-tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+      .work-tag {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border: 1px solid var(--ink);
+      }
+      .work:hover .work-tag { border-color: var(--paper); }
+
+      .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(24px, 5vw, 50px); align-items: start; }
+      .portrait { position: relative; border: 1px solid var(--ink); padding: 8px; background: var(--paper-2); }
+      .portrait img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.2) sepia(0.22);
+        mix-blend-mode: multiply;
+      }
+      .portrait figcaption {
+        margin-top: 8px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: center;
+      }
+      .about-body p { margin-bottom: 18px; font-size: 19px; line-height: 1.62; }
+      .about-body p:first-child::first-letter {
+        float: left;
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 3.4em;
+        line-height: 0.74;
+        padding: 4px 10px 0 0;
+        color: var(--stamp);
+      }
+      .about-body a { text-decoration: underline; text-underline-offset: 3px; }
+      .about-body a:hover { color: var(--stamp); }
+
+      .ledger { margin-top: 28px; border-top: 1px solid var(--ink); }
+      .ledger-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 14px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line-faint);
+        font-size: 16px;
+      }
+      .ledger-k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+
+      .contact-wrap { text-align: center; }
+      .contact-lead { font-family: var(--serif); font-weight: 900; font-size: clamp(28px, 6vw, 56px); line-height: 1.02; letter-spacing: -0.02em; max-width: 16ch; margin: 0 auto 30px; text-wrap: balance; }
+      .contact-lead .amp { color: var(--stamp); }
+      .contact-list { display: inline-flex; flex-direction: column; gap: 2px; text-align: left; min-width: min(460px, 90vw); }
+      .contact-list a {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--ink);
+        transition: padding-left 0.2s, color 0.2s;
+      }
+      .contact-list a:first-child { border-top: 1px solid var(--ink); }
+      .contact-list a:hover { padding-left: 16px; color: var(--stamp); }
+      .contact-k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); width: 84px; flex-shrink: 0; }
+      .contact-v { font-family: var(--serif); font-weight: 600; font-size: clamp(17px, 2.4vw, 22px); overflow-wrap: anywhere; }
+      .contact-list a:hover .contact-k { color: var(--stamp); }
+
+      footer { padding: 34px 0 54px; text-align: center; }
+      .foot-rule { border: none; border-top: 3px double var(--ink); margin-bottom: 18px; }
+      footer p { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 2.1; }
+      footer .dot { color: var(--stamp); }
+      footer a { color: var(--ink); border-bottom: 1px solid var(--line-faint); }
+      footer a:hover { color: var(--stamp); }
+
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.is-in { opacity: 1; transform: none; }
+
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; gap: 34px; }
+        .hero-art { order: -1; }
+        .about { grid-template-columns: 1fr; }
+        .portrait { max-width: 320px; }
+      }
+
+      @media (max-width: 640px) {
+        html { scroll-padding-top: 140px; }
+        body { font-size: 17px; }
+        .masthead-strap { display: none; }
+        .masthead-title { padding: 8px 0 4px; font-size: clamp(20px, 6vw, 44px); }
+        .work-grid { grid-template-columns: 1fr; }
+        .masthead-top .edition { display: none; }
+        .sec-head { flex-wrap: wrap; gap: 8px 14px; }
+        .sec-meta { margin-left: 0; width: 100%; }
+        .navbar { flex-wrap: wrap; gap: 12px 18px; }
+        .ledger-row { grid-template-columns: 1fr; gap: 2px; }
+        .hero-name { font-size: clamp(2.75rem, 12vw, 7rem); }
+      }
+
+      @media (max-width: 420px) {
+        body { font-size: 16px; }
+        .hero-name { font-size: 2.5rem; }
+        .masthead-top { font-size: 10px; letter-spacing: 0.08em; }
+        .navbar a { font-size: 10px; letter-spacing: 0.1em; }
+        .drop::first-letter { font-size: 3.6em; }
+      }
+
+      @media (max-height: 480px) {
+        .masthead-strap { display: none; }
+        .masthead-title { padding: 6px 0 2px; }
+      }
+
+      @media (hover: none) {
+        .work:active { background: var(--ink); color: var(--paper); }
+        .work:active .work-no { color: var(--paper); }
+        .work:active .work-desc { color: var(--paper-2); }
+        .work:active .work-tag { border-color: var(--paper); }
+        .contact-list a:active { padding-left: 12px; color: var(--stamp); }
+        .navbar a:active { border-color: var(--stamp); color: var(--stamp); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+        .reveal { opacity: 1; transform: none; }
       }
     </style>
   </head>
   <body>
 
-    <div id="home" class="section">
-      <div class="fade-wrapper bento-container">
-        
-        <div class="bento-card card-hero">
-          <div class="hero-subtitle">magnitude and direction</div>
-          <h1 class="hero-title">Great Ezenna</h1>
-          <p class="hero-bio">
-            18 y/o first-year Mathematics student @<a href="https://unn.edu.ng" target="_blank" rel="noopener">UNN</a>. I spend most of my time building and breaking things to see how they work. Currently diving deep into Rust.
-          </p>
+    <header class="masthead">
+      <div class="page inner">
+        <div class="masthead-top">
+          <span class="edition">Vol. I · No. 01</span>
+          <span>Personal Edition</span>
+          <span class="edition">Nsukka, NG</span>
         </div>
-
-        <div class="bento-card card-tall photo-card">
-          <img src="https://i.ibb.co/Ng9nQFPm/linkedin-modified.jpg" alt="Great Ezenna" />
-          <div class="photo-overlay">I'm a vector</div>
+        <div class="masthead-title">The Ezenna Review</div>
+        <div class="masthead-strap">
+          <span>Mathematics</span><span class="dot">◆</span>
+          <span>Systems</span><span class="dot">◆</span>
+          <span>Building &amp; Breaking Things</span>
         </div>
-
-        <div class="bento-card card-square contact-card">
-          <a href="mailto:ezennagreat@gmail.com" class="email-link">ezennagreat@gmail.com</a>
-          <a href="mailto:great.ezenna.298051@unn.edu.ng" class="email-link">great.ezenna.298051@unn.edu.ng</a>
-          <a href="https://github.com/greatm3" target="_blank" class="btn">GitHub (@greatm3)</a>
-        </div>
-
-        <a href="#projects" class="bento-card card-square nav-card nav-down">
-          <span class="nav-text">Projects</span>
-          <span class="nav-icon">↓</span>
-        </a>
-
+        <nav class="navbar">
+          <a href="#home">Front Page</a>
+          <a href="#work">Selected Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-    </div>
+    </header>
 
-    <div id="projects" class="section">
-      <div class="fade-wrapper bento-container">
-        
-        <div class="bento-card card-wide projects-title-card">
-          <h2 class="projects-header">PROJECTS</h2>
+    <main class="page inner">
+
+      <section id="home">
+        <div class="hero">
+          <div class="hero-copy reveal">
+            <p class="kicker hero-kicker">The Front Page — Est. 2007</p>
+            <h1 class="hero-name">Great <span class="amp">&amp;</span> Curious<br />Ezenna</h1>
+            <p class="drop">
+              Eighteen years old, a first-year Mathematics student at the
+              <a href="https://unn.edu.ng" target="_blank" rel="noopener">University of Nigeria, Nsukka</a>.
+              I spend most of my time building and breaking things to see how they work — currently diving deep into Rust.
+            </p>
+            <div class="byline">
+              <span>By <b>Great Ezenna</b></span>
+              <span>Mathematics · <b>UNN</b></span>
+              <span>Now reading: <b>Rust</b></span>
+            </div>
+          </div>
+
+          <div class="hero-art reveal" style="transition-delay: 0.12s">
+            <figure class="stamp-fig">
+              <svg viewBox="0 0 300 300" role="img" aria-label="A red rubber-stamp seal reading Great Ezenna, established 2007.">
+                <defs>
+                  <path id="sealArc" d="M 150 150 m -112 0 a 112 112 0 1 1 224 0 a 112 112 0 1 1 -224 0" />
+                </defs>
+                <g class="stamp-rotate">
+                  <circle class="seal-ring" cx="150" cy="150" r="140" stroke-width="2" />
+                  <circle class="seal-ring" cx="150" cy="150" r="128" stroke-width="1" />
+                  <text class="seal-text">
+                    <textPath href="#sealArc" startOffset="0%">GREAT EZENNA · NSUKKA · SINCE 2007 · </textPath>
+                  </text>
+                </g>
+                <circle class="seal-ring" cx="150" cy="150" r="96" stroke-width="3" />
+                <text class="seal-mono" x="150" y="152">E</text>
+              </svg>
+              <figcaption class="stamp-cap">— Approved &amp; Stamped —</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="sec-head reveal">
+          <span class="sec-no">§ 01</span>
+          <h2 class="sec-title">Selected Work</h2>
+          <span class="sec-meta">Four Pieces</span>
         </div>
 
-        <a href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" class="bento-card card-wide">
-          <div class="proj-head">
-            <span class="proj-title">HTTP-from-scratch</span>
-            <span class="proj-repo">repo</span>
-          </div>
-          <p class="proj-desc">A barebones HTTP/1.1 server built with raw TCP sockets — no framework in between. Parses request lines and writes valid responses byte by byte.</p>
-          <div class="tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">TypeScript</span>
-          </div>
-        </a>
+        <div class="work-grid">
+          <a class="work reveal" href="https://github.com/greatm3/HTTP-from-scratch" target="_blank" rel="noopener">
+            <div class="work-top">
+              <span class="work-no">01</span>
+              <span class="work-title">HTTP-from-scratch</span>
+              <span class="work-read">Read →</span>
+            </div>
+            <p class="work-desc">A barebones HTTP/1.1 server built with raw TCP sockets — no framework in between. Parses request lines and writes valid responses byte by byte.</p>
+            <div class="work-tags"><span class="work-tag">Node.js</span><span class="work-tag">TypeScript</span></div>
+          </a>
 
-        <a href="https://github.com/greatm3/auth-api" target="_blank" class="bento-card card-square">
-          <div class="proj-head">
-            <span class="proj-title">auth-api</span>
-            <span class="proj-repo">repo</span>
-          </div>
-          <p class="proj-desc">User authentication API issuing and verifying JWT tokens with protected routes.</p>
-          <div class="tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Postgres</span>
-          </div>
-        </a>
+          <a class="work reveal" href="https://github.com/greatm3/auth-api" target="_blank" rel="noopener" style="transition-delay: 0.06s">
+            <div class="work-top">
+              <span class="work-no">02</span>
+              <span class="work-title">auth-api</span>
+              <span class="work-read">Read →</span>
+            </div>
+            <p class="work-desc">User authentication API issuing and verifying JWT tokens with protected routes.</p>
+            <div class="work-tags"><span class="work-tag">TypeScript</span><span class="work-tag">Postgres</span></div>
+          </a>
 
-        <a href="https://github.com/greatm3/rust-practice" target="_blank" class="bento-card card-square">
-          <div class="proj-head">
-            <span class="proj-title">rust-practice</span>
-            <span class="proj-repo">repo</span>
-          </div>
-          <p class="proj-desc">My ongoing log while learning Rust.</p>
-          <div class="tags">
-            <span class="tag">Rust</span>
-          </div>
-        </a>
+          <a class="work reveal" href="https://github.com/greatm3/rust-practice" target="_blank" rel="noopener" style="transition-delay: 0.12s">
+            <div class="work-top">
+              <span class="work-no">03</span>
+              <span class="work-title">rust-practice</span>
+              <span class="work-read">Read →</span>
+            </div>
+            <p class="work-desc">My ongoing log while learning Rust — notes, exercises, and small experiments as I go.</p>
+            <div class="work-tags"><span class="work-tag">Rust</span></div>
+          </a>
 
-        <a href="https://github.com/greatm3/blog-api" target="_blank" class="bento-card card-square">
-          <div class="proj-head">
-            <span class="proj-title">blog-api</span>
-            <span class="proj-repo">repo</span>
-          </div>
-          <p class="proj-desc">Full CRUD blog platform with auth rules and Redis caching for hot reads.</p>
-          <div class="tags">
-            <span class="tag">Redis</span>
-            <span class="tag">TypeScript</span>
-          </div>
-        </a>
+          <a class="work reveal" href="https://github.com/greatm3/blog-api" target="_blank" rel="noopener" style="transition-delay: 0.18s">
+            <div class="work-top">
+              <span class="work-no">04</span>
+              <span class="work-title">blog-api</span>
+              <span class="work-read">Read →</span>
+            </div>
+            <p class="work-desc">Full CRUD blog platform with auth rules and Redis caching for hot reads.</p>
+            <div class="work-tags"><span class="work-tag">Redis</span><span class="work-tag">TypeScript</span></div>
+          </a>
+        </div>
+      </section>
 
-      </div>
-    </div>
+      <section id="about">
+        <div class="sec-head reveal">
+          <span class="sec-no">§ 02</span>
+          <h2 class="sec-title">About the Author</h2>
+          <span class="sec-meta">Colophon</span>
+        </div>
+
+        <div class="about">
+          <figure class="portrait reveal">
+            <img src="https://i.ibb.co/Ng9nQFPm/linkedin-modified.jpg" alt="Portrait of Great Ezenna" loading="lazy" />
+            <figcaption>Great Ezenna · Nsukka</figcaption>
+          </figure>
+
+          <div class="about-body reveal" style="transition-delay: 0.08s">
+            <p>I study mathematics because patterns are the only things that scale, and I build servers from scratch because understanding has to start at zero. When something breaks, that's usually where the interesting part begins.</p>
+            <p>Right now most of my attention goes to Rust — ownership, traits, zero-cost abstractions — and to systems that keep running quietly when nobody is watching. You can find the source for everything on <a href="https://github.com/greatm3" target="_blank" rel="noopener">GitHub</a>.</p>
+
+            <div class="ledger">
+              <div class="ledger-row"><span class="ledger-k">Age</span><span>18 years</span></div>
+              <div class="ledger-row"><span class="ledger-k">Study</span><span>Mathematics</span></div>
+              <div class="ledger-row"><span class="ledger-k">School</span><span>University of Nigeria, Nsukka</span></div>
+              <div class="ledger-row"><span class="ledger-k">Focus</span><span>Rust · systems · building from scratch</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="sec-head reveal">
+          <span class="sec-no">§ 03</span>
+          <h2 class="sec-title">Correspondence</h2>
+          <span class="sec-meta">Letters Welcome</span>
+        </div>
+
+        <div class="contact-wrap reveal">
+          <p class="contact-lead">Say hello <span class="amp">&amp;</span> let's make something.</p>
+          <div class="contact-list">
+            <a href="mailto:ezennagreat@gmail.com">
+              <span class="contact-k">Mail</span><span class="contact-v">ezennagreat@gmail.com</span>
+            </a>
+            <a href="mailto:great.ezenna.298051@unn.edu.ng">
+              <span class="contact-k">Campus</span><span class="contact-v">great.ezenna.298051@unn.edu.ng</span>
+            </a>
+            <a href="https://github.com/greatm3" target="_blank" rel="noopener">
+              <span class="contact-k">GitHub</span><span class="contact-v">github.com/greatm3</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <hr class="foot-rule" />
+        <p>The Ezenna Review · No. 01 <span class="dot">◆</span> © <span id="year">2026</span> Great Ezenna <span class="dot">◆</span> <a href="#home">Return to Front Page ↑</a></p>
+        <p>Set in Fraunces &amp; Newsreader · Printed on the open web · No frameworks harmed</p>
+      </footer>
+
+    </main>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            } else {
-              entry.target.classList.remove("visible");
-            }
-          });
-        }, { 
-          threshold: 0.35 
-        });
+        document.getElementById("year").textContent = new Date().getFullYear();
 
-        document.querySelectorAll(".fade-wrapper").forEach((el) => {
-          observer.observe(el);
-        });
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
       });
     </script>
   </body>
