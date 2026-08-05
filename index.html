@@ -8,43 +8,34 @@
       name="description"
       content="Great Ezenna — 18 y/o mathematics student and systems tinkerer. Building and breaking things."
     />
-    <meta property="og:title" content="The Ezenna Review — Great Ezenna" />
+    <meta property="og:title" content="Great Ezenna" />
     <meta
       property="og:description"
       content="18 y/o mathematics student. Building and breaking things."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#f2ede3" />
-    <title>The Ezenna Review — Great Ezenna</title>
+    <meta name="theme-color" content="#fbfbfa" />
+    <title>Great Ezenna</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231a1a1f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Poppins,sans-serif'%20font-size='38'%20font-weight='700'%20text-anchor='middle'%20fill='%23fbfbfa'%3EE%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="masthead">
-      <div class="page inner">
-        <div class="masthead-top">
-          <span class="edition">Vol. I · No. 01</span>
-          <span>Personal Edition</span>
-          <span class="edition">Nsukka, NG</span>
-        </div>
-        <div class="masthead-title">The Ezenna Review</div>
-        <div class="masthead-strap">
-          <span>Mathematics</span><span class="dot">◆</span> <span>Systems</span
-          ><span class="dot">◆</span>
-          <span>Building &amp; Breaking Things</span>
-        </div>
-        <nav class="navbar">
-          <a href="#home">Front Page</a>
-          <a href="#work">Selected Work</a>
+    <header class="nav">
+      <div class="page inner nav-inner">
+        <a class="brand" href="#home"
+          >Great Ezenna<span class="brand-dot">.</span></a
+        >
+        <nav class="navlinks">
+          <a href="#work">Work</a>
           <a href="writeups.html">Writeups</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
@@ -54,82 +45,31 @@
 
     <main class="page inner">
       <section id="home">
-        <div class="hero">
-          <div class="hero-copy reveal">
-            <p class="kicker hero-kicker">The Front Page — Est. 2007</p>
-            <h1 class="hero-name">
-              Great <span class="amp">&amp;</span> Curious<br />Ezenna
-            </h1>
-            <p class="drop">
-              Eighteen years old, a first-year Mathematics student at the
-              <a href="https://unn.edu.ng" target="_blank" rel="noopener"
-                >University of Nigeria, Nsukka</a
-              >. I spend most of my time building and breaking things to see how
-              they work — currently diving deep into Rust.
-            </p>
-            <div class="byline">
-              <span>By <b>Great Ezenna</b></span>
-              <span>Mathematics · <b>UNN</b></span>
-              <span>Now reading: <b>Rust</b></span>
-            </div>
-          </div>
-
-          <div class="hero-art reveal" style="transition-delay: 0.12s">
-            <figure class="stamp-fig">
-              <svg
-                viewBox="0 0 300 300"
-                role="img"
-                aria-label="A red rubber-stamp seal reading Great Ezenna, established 2007."
-              >
-                <defs>
-                  <path
-                    id="sealArc"
-                    d="M 150 150 m -112 0 a 112 112 0 1 1 224 0 a 112 112 0 1 1 -224 0"
-                  />
-                </defs>
-                <g class="stamp-rotate">
-                  <circle
-                    class="seal-ring"
-                    cx="150"
-                    cy="150"
-                    r="140"
-                    stroke-width="2"
-                  />
-                  <circle
-                    class="seal-ring"
-                    cx="150"
-                    cy="150"
-                    r="128"
-                    stroke-width="1"
-                  />
-                  <text class="seal-text">
-                    <textPath href="#sealArc" startOffset="0%">
-                      GREAT EZENNA · NSUKKA · SINCE 2007 ·
-                    </textPath>
-                  </text>
-                </g>
-                <circle
-                  class="seal-ring"
-                  cx="150"
-                  cy="150"
-                  r="96"
-                  stroke-width="3"
-                />
-                <text class="seal-mono" x="150" y="152">E</text>
-              </svg>
-              <figcaption class="stamp-cap">
-                — Approved &amp; Stamped —
-              </figcaption>
-            </figure>
+        <div class="hero reveal">
+          <p class="kicker hero-kicker">Mathematics · Systems · Nsukka, NG</p>
+          <h1 class="hero-name">
+            Great <span class="amp">&amp;</span> curious.
+          </h1>
+          <p class="drop">
+            Eighteen years old, a first-year Mathematics student at the
+            <a href="https://unn.edu.ng" target="_blank" rel="noopener"
+              >University of Nigeria, Nsukka</a
+            >. I spend most of my time building and breaking things to see how
+            they work — currently diving deep into Rust.
+          </p>
+          <div class="byline">
+            <span>By <b>Great Ezenna</b></span>
+            <span>Mathematics · <b>UNN</b></span>
+            <span>Now reading: <b>Rust</b></span>
           </div>
         </div>
       </section>
 
       <section id="work">
         <div class="sec-head reveal">
-          <span class="sec-no">§ 01</span>
+          <span class="sec-no">01</span>
           <h2 class="sec-title">Selected Work</h2>
-          <span class="sec-meta">Four Pieces</span>
+          <span class="sec-meta">Four pieces</span>
         </div>
 
         <div class="work-grid">
@@ -137,7 +77,7 @@
             <div class="work-top">
               <span class="work-no">01</span>
               <span class="work-title">HTTP-from-scratch</span>
-              <span class="work-read">Feature →</span>
+              <span class="work-read">Read →</span>
             </div>
             <p class="work-desc">
               A barebones HTTP/1.1 server built with raw TCP sockets — no
@@ -148,7 +88,7 @@
             <div class="work-tags">
               <span class="work-tag">Node.js</span
               ><span class="work-tag">TypeScript</span
-              ><span class="work-tag">Feature Story</span>
+              ><span class="work-tag">Field report</span>
             </div>
           </a>
 
@@ -219,8 +159,8 @@
 
       <section id="about">
         <div class="sec-head reveal">
-          <span class="sec-no">§ 02</span>
-          <h2 class="sec-title">About the Author</h2>
+          <span class="sec-no">02</span>
+          <h2 class="sec-title">About</h2>
           <span class="sec-meta">Colophon</span>
         </div>
 
@@ -237,11 +177,13 @@
           <div class="about-body reveal" style="transition-delay: 0.08s">
             <p>
               I study mathematics because patterns are the only things that
-              scale, and i love programming, because just like math, it's just a way to use a formal language to instruct or represent a system of thoughts.
+              scale, and i love programming, because just like math, it's just a
+              way to use a formal language to instruct or represent a system of
+              thoughts.
             </p>
             <p>
-              Right now most of my attention goes to Rust, Python and to systems that keep running quietly
-              when nobody is watching. You can find the source for everything on
+              Right now most of my attention goes to Rust, Python and to systems. You can find
+              the source for everything on
               <a
                 href="https://github.com/greatm3"
                 target="_blank"
@@ -255,7 +197,11 @@
                 <span class="ledger-k">Age</span><span>18 years</span>
               </div>
               <div class="ledger-row">
-                <span class="ledger-k">Study</span><span>Mathematics @UNN(University of Nigeria, Nsukka) - Expected 2029</span>
+                <span class="ledger-k">Study</span
+                ><span
+                  >Mathematics @UNN(University of Nigeria, Nsukka) - Expected
+                  2029</span
+                >
               </div>
               <div class="ledger-row">
                 <span class="ledger-k">Focus</span
@@ -268,9 +214,9 @@
 
       <section id="contact">
         <div class="sec-head reveal">
-          <span class="sec-no">§ 03</span>
-          <h2 class="sec-title">Correspondence</h2>
-          <span class="sec-meta">Letters Welcome</span>
+          <span class="sec-no">03</span>
+          <h2 class="sec-title">Get in touch</h2>
+          <span class="sec-meta">Letters welcome</span>
         </div>
 
         <div class="contact-wrap reveal">
@@ -303,15 +249,9 @@
       </section>
 
       <footer>
-        <hr class="foot-rule" />
         <p>
-          The Ezenna Review · No. 01 <span class="dot">◆</span> ©
-          <span id="year">2026</span> Great Ezenna <span class="dot">◆</span>
-          <a href="#home">Return to Front Page ↑</a>
-        </p>
-        <p>
-          Set in Fraunces &amp; Newsreader · Printed on the open web · No
-          frameworks harmed
+          © <span id="year">2026</span> Great Ezenna ·
+          <a href="#home">Back to top ↑</a>
         </p>
       </footer>
     </main>

@@ -17,32 +17,28 @@
       content="What I learned writing an HTTP/1.1 server from raw TCP sockets — no framework in between."
     />
     <meta property="og:type" content="article" />
-    <meta name="theme-color" content="#f2ede3" />
-    <title>Building an HTTP Server the Hard Way — The Ezenna Review</title>
+    <meta name="theme-color" content="#fbfbfa" />
+    <title>Building an HTTP Server the Hard Way — Great Ezenna</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231a1a1f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Poppins,sans-serif'%20font-size='38'%20font-weight='700'%20text-anchor='middle'%20fill='%23fbfbfa'%3EE%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="masthead">
-      <div class="page inner">
-        <div class="masthead-top">
-          <span class="edition">Vol. I · No. 01</span>
-          <span>Feature Story</span>
-          <span class="edition">Nsukka, NG</span>
-        </div>
-        <div class="masthead-title">The Ezenna Review</div>
-        <nav class="navbar">
-          <a href="index.html#home">Front Page</a>
-          <a href="index.html#work">Selected Work</a>
+    <header class="nav">
+      <div class="page inner nav-inner">
+        <a class="brand" href="index.html#home"
+          >Great Ezenna<span class="brand-dot">.</span></a
+        >
+        <nav class="navlinks">
+          <a href="index.html#work">Work</a>
           <a href="writeups.html">Writeups</a>
           <a href="index.html#about">About</a>
           <a href="index.html#contact">Contact</a>
@@ -52,7 +48,7 @@
 
     <main class="page inner">
       <article class="article">
-        <p class="kicker article-kicker">§ 01 — Selected Work · A Field Report</p>
+        <p class="kicker article-kicker">Field report · Systems</p>
         <h1 class="article-title">Building an HTTP Server the Hard Way</h1>
         <p class="article-standfirst">
           An HTTP/1.1 server written from raw TCP sockets — no Express, no
@@ -105,8 +101,8 @@
           <p>
             So the server can't just react to every <code>data</code> event as
             if it were complete. It has to buffer what it's received and keep
-            asking a quieter question: <i>do I have a whole request yet?</i>
-            For now I answer that by watching for the <code>\r\n\r\n</code> that
+            asking a quieter question: <i>do I have a whole request yet?</i> For
+            now I answer that by watching for the <code>\r\n\r\n</code> that
             marks the end of the headers before I try to parse anything. Getting
             that wrong means replying to half a request — and getting it right
             is the difference between reading a protocol and merely reading
@@ -116,11 +112,11 @@
           <h2 class="article-h2">Building it like Node builds it</h2>
           <p>
             I could have kept the interface primitive — pass strings around, be
-            done with it. Instead I modeled it on Node's own <code>http</code>
-            module. The request object extends <code>Readable</code>, the
-            response extends <code>Writable</code>, and the server is an
-            <code>EventEmitter</code> that emits a <code>request</code> event —
-            so you can write
+            done with it. Instead I modeled it on Node's own
+            <code>http</code> module. The request object extends
+            <code>Readable</code>, the response extends <code>Writable</code>,
+            and the server is an <code>EventEmitter</code> that emits a
+            <code>request</code> event — so you can write
             <code>server.on("request", (req, res) =&gt; …)</code> exactly the
             way you would with the real thing.
           </p>
@@ -128,9 +124,9 @@
             That was deliberate. I wanted to learn the actual interface — the
             shape professional tools present to you — not a toy version of it.
             And, honestly, I liked it. There is a particular satisfaction in
-            calling <code>res.setHeader()</code> and
-            <code>res.write()</code> on something you built from a bare socket,
-            and having it behave the way the library you copied does.
+            calling <code>res.setHeader()</code> and <code>res.write()</code> on
+            something you built from a bare socket, and having it behave the way
+            the library you copied does.
           </p>
 
           <h2 class="article-h2">What the wire made me handle</h2>
@@ -176,15 +172,9 @@
       </article>
 
       <footer>
-        <hr class="foot-rule" />
         <p>
-          The Ezenna Review · No. 01 <span class="dot">◆</span> ©
-          <span id="year">2026</span> Great Ezenna <span class="dot">◆</span>
-          <a href="index.html#home">Return to Front Page ↑</a>
-        </p>
-        <p>
-          Set in Fraunces &amp; Newsreader · Printed on the open web · No
-          frameworks harmed
+          © <span id="year">2026</span> Great Ezenna ·
+          <a href="index.html#home">Back to top ↑</a>
         </p>
       </footer>
     </main>

@@ -8,38 +8,34 @@
       name="description"
       content="Field reports and write-ups by Great Ezenna — notes from building and breaking things."
     />
-    <meta property="og:title" content="Writeups — The Ezenna Review" />
+    <meta property="og:title" content="Writeups — Great Ezenna" />
     <meta
       property="og:description"
       content="Field reports and write-ups on building and breaking things."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#f2ede3" />
-    <title>Writeups — The Ezenna Review</title>
+    <meta name="theme-color" content="#fbfbfa" />
+    <title>Writeups — Great Ezenna</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23f2ede3'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='bold'%20text-anchor='middle'%20fill='%23141414'%3EE%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231a1a1f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Poppins,sans-serif'%20font-size='38'%20font-weight='700'%20text-anchor='middle'%20fill='%23fbfbfa'%3EE%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="masthead">
-      <div class="page inner">
-        <div class="masthead-top">
-          <span class="edition">Vol. I · No. 01</span>
-          <span>The Archive</span>
-          <span class="edition">Nsukka, NG</span>
-        </div>
-        <div class="masthead-title">The Ezenna Review</div>
-        <nav class="navbar">
-          <a href="index.html#home">Front Page</a>
-          <a href="index.html#work">Selected Work</a>
+    <header class="nav">
+      <div class="page inner nav-inner">
+        <a class="brand" href="index.html#home"
+          >Great Ezenna<span class="brand-dot">.</span></a
+        >
+        <nav class="navlinks">
+          <a href="index.html#work">Work</a>
           <a href="writeups.html">Writeups</a>
           <a href="index.html#about">About</a>
           <a href="index.html#contact">Contact</a>
@@ -50,9 +46,9 @@
     <main class="page inner">
       <section id="writeups">
         <div class="sec-head">
-          <span class="sec-no">§ A</span>
+          <span class="sec-no">A</span>
           <h2 class="sec-title">Writeups &amp; Field Reports</h2>
-          <span class="sec-meta">The Archive</span>
+          <span class="sec-meta">The archive</span>
         </div>
 
         <p class="writeups-intro">
@@ -64,11 +60,13 @@
           <a class="writeup" href="http-from-scratch.html">
             <span class="writeup-no">01</span>
             <div class="writeup-main">
-              <h3 class="writeup-title">Building an HTTP Server the Hard Way</h3>
+              <h3 class="writeup-title">
+                Building an HTTP Server the Hard Way
+              </h3>
               <p class="writeup-dek">
-                An HTTP/1.1 server written from raw TCP sockets — no framework in
-                between. What the wire taught me about chunks, framing, and the
-                interfaces we take for granted.
+                An HTTP/1.1 server written from raw TCP sockets — no framework
+                in between. What the wire taught me about chunks, framing, and
+                the interfaces we take for granted.
               </p>
               <div class="writeup-tags">
                 <span class="work-tag">Node.js</span
@@ -84,15 +82,9 @@
       </section>
 
       <footer>
-        <hr class="foot-rule" />
         <p>
-          The Ezenna Review · No. 01 <span class="dot">◆</span> ©
-          <span id="year">2026</span> Great Ezenna <span class="dot">◆</span>
-          <a href="index.html#home">Return to Front Page ↑</a>
-        </p>
-        <p>
-          Set in Fraunces &amp; Newsreader · Printed on the open web · No
-          frameworks harmed
+          © <span id="year">2026</span> Great Ezenna ·
+          <a href="index.html#home">Back to top ↑</a>
         </p>
       </footer>
     </main>
