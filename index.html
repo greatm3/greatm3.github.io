@@ -6,273 +6,201 @@
     <meta name="color-scheme" content="light" />
     <meta
       name="description"
-      content="Great Ezenna — 18 y/o mathematics student and systems tinkerer. Building and breaking things."
+      content="Great Ezenna — 18 y/o mathematics student at UNN. Learning programming and understanding the computer system."
     />
-    <meta property="og:title" content="Great Ezenna" />
-    <meta
-      property="og:description"
-      content="18 y/o mathematics student. Building and breaking things."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#fbfbfa" />
-    <title>Great Ezenna</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231a1a1f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Poppins,sans-serif'%20font-size='38'%20font-weight='700'%20text-anchor='middle'%20fill='%23fbfbfa'%3EE%3C/text%3E%3C/svg%3E"
-    />
+    <title>Great Ezenna — Mathematics &amp; Systems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="nav">
-      <div class="page inner nav-inner">
-        <a class="brand" href="#home"
-          >Great Ezenna<span class="brand-dot">.</span></a
-        >
-        <nav class="navlinks">
-          <a href="#work">Work</a>
-          <a href="writeups.html">Writeups</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+    <div class="page inner">
+      <header class="paper-header">
+        <div class="running-head">
+          <span>PORTFOLIO &amp; WORKS</span>
+          <span>UNIV. OF NIGERIA, NSUKKA</span>
+        </div>
+        
+        <div class="title-block">
+          <h1 class="paper-title">Great Ezenna</h1>
+          <div class="author-block">
+            <span class="author-name">G. Ezenna</span><br />
+            <span class="author-affil">Department of Mathematics, University of Nigeria, Nsukka</span><br />
+            <span class="author-email">&lt;ezennagreat@gmail.com&gt;</span>
+          </div>
+          <div class="paper-date">August 2026</div>
+        </div>
 
-    <main class="page inner">
-      <section id="home">
-        <div class="hero reveal">
-          <p class="kicker hero-kicker">Mathematics · Systems · Nsukka, NG</p>
-          <h1 class="hero-name">
-            Great <span class="amp">&amp;</span> curious.
-          </h1>
-          <p class="drop">
-            Eighteen years old, a first-year Mathematics student at the
-            <a href="https://unn.edu.ng" target="_blank" rel="noopener"
-              >University of Nigeria, Nsukka</a
-            >. I spend most of my time building and breaking things to see how
-            they work — currently diving deep into Rust.
+        <div class="abstract-box">
+          <div class="abstract-title">Abstract</div>
+          <p class="abstract-text">
+            Eighteen years old, a first-year Mathematics student at the University of Nigeria, Nsukka. Learning programming from first principles with a focus on understanding the computer system.
           </p>
-          <div class="byline">
-            <span>By <b>Great Ezenna</b></span>
-            <span>Mathematics · <b>UNN</b></span>
-            <span>Now reading: <b>Rust</b></span>
+        </div>
+      </header>
+
+      <main>
+        <section id="work">
+          <div class="sec-head">
+            <span class="sec-no">1</span>
+            <h2 class="sec-title">Selected Implementations</h2>
           </div>
-        </div>
-      </section>
 
-      <section id="work">
-        <div class="sec-head reveal">
-          <span class="sec-no">01</span>
-          <h2 class="sec-title">Selected Work</h2>
-          <span class="sec-meta">Four pieces</span>
-        </div>
+          <div class="bibliography">
+            <article class="bib-item">
+              <div class="bib-cite">[1]</div>
+              <div class="bib-body">
+                <div class="bib-header">
+                  <a class="bib-title" href="https://github.com/greatm3/kv-store" target="_blank" rel="noopener">kv-store</a>
+                  <span class="bib-link">[<a href="https://github.com/greatm3/kv-store" target="_blank" rel="noopener">code</a>]</span>
+                </div>
+                <p class="bib-desc">
+                  A multi-threaded Key-Value store built in Rust featuring custom protocol parsing, fine-grained lock scoping for high throughput, and Append-Only File (AOF) crash recovery.
+                </p>
+                <div class="bib-meta">
+                  Keywords: Rust
+                </div>
+              </div>
+            </article>
 
-        <div class="work-grid">
-          <a class="work reveal" href="http-from-scratch.html">
-            <div class="work-top">
-              <span class="work-no">01</span>
-              <span class="work-title">HTTP-from-scratch</span>
-              <span class="work-read">Read →</span>
-            </div>
-            <p class="work-desc">
-              A barebones HTTP/1.1 server built with raw TCP sockets — no
-              framework in between. Parses request lines and writes valid
-              responses byte by byte. Read the field report on what it taught
-              me.
-            </p>
-            <div class="work-tags">
-              <span class="work-tag">Node.js</span
-              ><span class="work-tag">TypeScript</span
-              ><span class="work-tag">Field report</span>
-            </div>
-          </a>
+            <article class="bib-item">
+              <div class="bib-cite">[2]</div>
+              <div class="bib-body">
+                <div class="bib-header">
+                  <a class="bib-title" href="https://github.com/greatm3/http-from-scratch" target="_blank" rel="noopener">HTTP-from-scratch</a>
+                  <span class="bib-link">[<a href="https://github.com/greatm3/http-from-scratch" target="_blank" rel="noopener">code</a>]</span>
+                </div>
+                <p class="bib-desc">
+                  A minimalist HTTP/1.1 server implementation byte-parsed directly on network streams without third-party frameworks.
+                </p>
+                <div class="bib-meta">
+                  Keywords: Node.js, TypeScript
+                </div>
+              </div>
+            </article>
 
-          <a
-            class="work reveal"
-            href="https://github.com/greatm3/auth-api"
-            target="_blank"
-            rel="noopener"
-            style="transition-delay: 0.06s"
-          >
-            <div class="work-top">
-              <span class="work-no">02</span>
-              <span class="work-title">auth-api</span>
-              <span class="work-read">Read →</span>
-            </div>
-            <p class="work-desc">
-              User authentication API issuing and verifying JWT tokens with
-              protected routes.
-            </p>
-            <div class="work-tags">
-              <span class="work-tag">TypeScript</span
-              ><span class="work-tag">Postgres</span>
-            </div>
-          </a>
+            <article class="bib-item">
+              <div class="bib-cite">[3]</div>
+              <div class="bib-body">
+                <div class="bib-header">
+                  <a class="bib-title" href="https://github.com/greatm3/auth-api" target="_blank" rel="noopener">auth-api</a>
+                  <span class="bib-link">[<a href="https://github.com/greatm3/auth-api" target="_blank" rel="noopener">code</a>]</span>
+                </div>
+                <p class="bib-desc">
+                  User authentication service issuing and verifying JWT tokens with password hashing, protected routes, and relational schema design.
+                </p>
+                <div class="bib-meta">
+                  Keywords: TypeScript, PostgreSQL
+                </div>
+              </div>
+            </article>
 
-          <a
-            class="work reveal"
-            href="https://github.com/greatm3/rust-practice"
-            target="_blank"
-            rel="noopener"
-            style="transition-delay: 0.12s"
-          >
-            <div class="work-top">
-              <span class="work-no">03</span>
-              <span class="work-title">rust-practice</span>
-              <span class="work-read">Read →</span>
-            </div>
-            <p class="work-desc">
-              My ongoing log while learning Rust — notes, exercises, and small
-              experiments as I go.
-            </p>
-            <div class="work-tags"><span class="work-tag">Rust</span></div>
-          </a>
+            <article class="bib-item">
+              <div class="bib-cite">[4]</div>
+              <div class="bib-body">
+                <div class="bib-header">
+                  <a class="bib-title" href="https://github.com/greatm3/blog-api" target="_blank" rel="noopener">blog-api</a>
+                  <span class="bib-link">[<a href="https://github.com/greatm3/blog-api" target="_blank" rel="noopener">code</a>]</span>
+                </div>
+                <p class="bib-desc">
+                  CRUD content management server featuring granular authorization controls and Redis caching for low-latency hot reads.
+                </p>
+                <div class="bib-meta">
+                  Keywords: Redis, TypeScript.
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
 
-          <a
-            class="work reveal"
-            href="https://github.com/greatm3/blog-api"
-            target="_blank"
-            rel="noopener"
-            style="transition-delay: 0.18s"
-          >
-            <div class="work-top">
-              <span class="work-no">04</span>
-              <span class="work-title">blog-api</span>
-              <span class="work-read">Read →</span>
-            </div>
-            <p class="work-desc">
-              Full CRUD blog platform with auth rules and Redis caching for hot
-              reads.
-            </p>
-            <div class="work-tags">
-              <span class="work-tag">Redis</span
-              ><span class="work-tag">TypeScript</span>
-            </div>
-          </a>
-        </div>
-      </section>
+        <section id="about">
+          <div class="sec-head">
+            <span class="sec-no">2</span>
+            <h2 class="sec-title">Author Profile &amp; Colophon</h2>
+          </div>
 
-      <section id="about">
-        <div class="sec-head reveal">
-          <span class="sec-no">02</span>
-          <h2 class="sec-title">About</h2>
-          <span class="sec-meta">Colophon</span>
-        </div>
-
-        <div class="about">
-          <figure class="portrait reveal">
-            <img
-              src="https://i.ibb.co/Ng9nQFPm/linkedin-modified.jpg"
-              alt="Portrait of Great Ezenna"
-              loading="lazy"
-            />
-            <figcaption>Great Ezenna · Nsukka</figcaption>
-          </figure>
-
-          <div class="about-body reveal" style="transition-delay: 0.08s">
+          <div class="about-content">
             <p>
-              I study mathematics because patterns are the only things that
-              scale, and i love programming, because just like math, it's just a
-              way to use a formal language to instruct or represent a system of
-              thoughts.
-            </p>
-            <p>
-              Right now most of my attention goes to Rust, Python and to systems. You can find
-              the source for everything on
-              <a
-                href="https://github.com/greatm3"
-                target="_blank"
-                rel="noopener"
-                >GitHub</a
-              >.
+              I study mathematics because formal patterns scale, and I learn programming to understand how the computer system works under the hood, currently focusing on Rust.
             </p>
 
-            <div class="ledger">
-              <div class="ledger-row">
-                <span class="ledger-k">Age</span><span>18 years</span>
-              </div>
-              <div class="ledger-row">
-                <span class="ledger-k">Study</span
-                ><span
-                  >Mathematics @UNN(University of Nigeria, Nsukka) - Expected
-                  2029</span
-                >
-              </div>
-              <div class="ledger-row">
-                <span class="ledger-k">Focus</span
-                ><span>Rust · systems · learning from first principles</span>
-              </div>
-            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Age</td>
+                  <td>18 years</td>
+                </tr>
+                <tr>
+                  <td>Degree Program</td>
+                  <td>B.Sc. Mathematics, University of Nigeria, Nsukka (2025–2029)</td>
+                </tr>
+                <tr>
+                  <td>Primary Focus</td>
+                  <td>Systems Programming · First Principles</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contact">
-        <div class="sec-head reveal">
-          <span class="sec-no">03</span>
-          <h2 class="sec-title">Get in touch</h2>
-          <span class="sec-meta">Letters welcome</span>
-        </div>
-
-        <div class="contact-wrap reveal">
-          <p class="contact-lead">
-            Say hello <span class="amp">&amp;</span> let's make something.
-          </p>
-          <div class="contact-list">
-            <a href="mailto:ezennagreat@gmail.com">
-              <span class="contact-k">Mail</span
-              ><span class="contact-v">ezennagreat@gmail.com</span>
-            </a>
-            <a href="mailto:great.ezenna.298051@unn.edu.ng">
-              <span class="contact-k">Campus</span
-              ><span class="contact-v">great.ezenna.298051@unn.edu.ng</span>
-            </a>
-            <a href="https://github.com/greatm3" target="_blank" rel="noopener">
-              <span class="contact-k">GitHub</span
-              ><span class="contact-v">github.com/greatm3</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/greatezenna/"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="contact-k">LinkedIn</span
-              ><span class="contact-v">linkedin.com/in/greatezenna</span>
-            </a>
+        <section id="contact">
+          <div class="sec-head">
+            <span class="sec-no">3</span>
+            <h2 class="sec-title">Contact</h2>
           </div>
-        </div>
-      </section>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mail</td>
+                <td><a href="mailto:ezennagreat@gmail.com">ezennagreat@gmail.com</a></td>
+              </tr>
+              <tr>
+                <td>Campus</td>
+                <td><a href="mailto:great.ezenna.298051@unn.edu.ng">great.ezenna.298051@unn.edu.ng</a></td>
+              </tr>
+              <tr>
+                <td>X / Twitter</td>
+                <td><a href="https://x.com/0x_greatm3" target="_blank" rel="noopener">@0x_greatm3</a></td>
+              </tr>
+              <tr>
+                <td>GitHub</td>
+                <td><a href="https://github.com/greatm3" target="_blank" rel="noopener">github.com/greatm3</a></td>
+              </tr>
+              <tr>
+                <td>LinkedIn</td>
+                <td><a href="https://www.linkedin.com/in/greatezenna/" target="_blank" rel="noopener">linkedin.com/in/greatezenna</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
 
       <footer>
-        <p>
-          © <span id="year">2026</span> Great Ezenna ·
-          <a href="#home">Back to top ↑</a>
-        </p>
+        <div class="paper-footer">
+          <span>© <span id="year">2026</span> G. Ezenna</span>
+        </div>
       </footer>
-    </main>
+    </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-in");
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12 },
-        );
-        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-      });
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
