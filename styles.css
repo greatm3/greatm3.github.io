@@ -9,7 +9,8 @@
   --amber-tint: #fbe5b8;
   --line: rgba(20, 40, 75, 0.14);
   --grid: rgba(120, 90, 30, 0.07);
-  --gap: 0;
+  --gap: 5px;
+  --rule: #000;
   --radius: 0;
   --serif: "STIX Two Text", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -36,8 +37,7 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
 
 .icon { width: 1.05em; height: 1.05em; flex: none; }
 
-/* ---------- full-bleed page: tiles touch the screen edges ---------- */
-.page { display: flex; flex-direction: column; gap: var(--gap); padding: 0; }
+.page { display: flex; flex-direction: column; gap: var(--gap); padding: 0; background: var(--rule); }
 
 .hero,
 .bento {
@@ -46,7 +46,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   gap: var(--gap);
 }
 
-/* first screen = exactly one viewport */
 .hero {
   grid-template-rows: auto 1fr;
   min-height: 100vh;
@@ -63,8 +62,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   padding: 34px;
   background: var(--paper);
   border: 0;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   border-radius: var(--radius);
 }
 
@@ -81,7 +78,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
 }
 .tile-label .icon { opacity: 0.75; }
 
-/* ---------- hero placement ---------- */
 .t-photo { grid-column: 1 / span 5; grid-row: 1 / span 2; padding: 0; overflow: hidden; }
 .t-intro { grid-column: 6 / -1; grid-row: 1; justify-content: center; }
 .t-about { grid-column: 6 / -1; grid-row: 2; justify-content: center; }
@@ -94,7 +90,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   object-position: center top;
 }
 
-/* ---------- bento placement ---------- */
 .t-now     { grid-column: span 8; min-height: 44vh; }
 .t-rust    { grid-column: span 4; }
 .t-head    { grid-column: 1 / -1; }
@@ -105,7 +100,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
 .t-blog    { grid-column: span 4; }
 .t-contact { grid-column: 1 / -1; }
 
-/* ---------- intro ---------- */
 .t-intro h1 {
   margin: 0 0 6px;
   font-size: clamp(2.8rem, 6.4vw, 4.8rem);
@@ -117,7 +111,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
 .lede { margin-top: 20px !important; max-width: 52ch; font-size: 1.08rem; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
 
-/* ---------- buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -130,27 +123,24 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   color: var(--navy);
   background: transparent;
   border: 1px solid var(--navy);
-  border-radius: 5px;
+  border-radius: var(--radius);
   transition: background-color 0.12s, color 0.12s, border-color 0.12s;
 }
 .btn:hover { background: var(--navy); color: var(--paper); }
 .btn.solid { background: var(--navy); color: var(--paper); }
-.btn.solid:hover { background: var(--blue); border-color: var(--blue); }
+.btn.solid:hover { background: var(--blue); }
 .btn.small { padding: 5px 10px; font-size: 0.74rem; gap: 6px; }
 .btn.light { color: var(--paper); border-color: rgba(255, 250, 240, 0.7); }
 .btn.light:hover { background: var(--amber); border-color: var(--amber); color: var(--navy); }
 
-/* ---------- about ---------- */
 .t-about p { max-width: 48ch; }
 .facts { margin: 18px 0 0; display: grid; }
 .facts div { display: grid; grid-template-columns: 5.2rem 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
 .facts dt { color: var(--navy-soft); font-size: 0.95rem; }
 .facts dd { margin: 0; font-size: 0.98rem; }
 
-/* ---------- depozit: the loud tile ---------- */
 .t-now {
   background: var(--amber);
-  border-color: rgba(20, 40, 75, 0.25);
   justify-content: center;
 }
 .t-now .tile-label { font-size: 1.1rem; }
@@ -162,15 +152,33 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   font-size: 0.74rem;
   color: var(--navy);
   border: 1px dashed var(--navy);
-  border-radius: 5px;
+  border-radius: var(--radius);
 }
 .t-now p { max-width: 54ch; }
 
-/* ---------- rust ---------- */
-.t-rust { background: var(--blue); color: var(--paper); border-color: var(--blue); justify-content: space-between; }
-.t-rust .big { font-size: clamp(3.4rem, 7vw, 5.4rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+.t-rust { background: var(--blue); color: var(--paper); justify-content: space-between; }
+.t-rust .big {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2em 0.7em;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
 
-/* ---------- section header tile ---------- */
+.t-rust .big span + span::before {
+  content: "";
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  margin-right: 0.7em;
+  background: var(--amber);
+  transform: rotate(45deg); 
+  vertical-align: middle;
+}
+
 .t-head {
   flex-direction: row;
   align-items: center;
@@ -183,7 +191,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
 }
 .t-head .icon { color: var(--blue); }
 
-/* ---------- projects ---------- */
 .t-proj { gap: 12px; min-height: 230px; }
 .proj-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .t-proj h3 { margin: 0; font-size: 1.45rem; line-height: 1.2; font-weight: 700; }
@@ -194,19 +201,18 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   font-family: var(--mono);
   font-size: 0.74rem;
   border: 1px solid currentColor;
-  border-radius: 5px;
+  border-radius: var(--radius);
   opacity: 0.85;
 }
 
-.t-prof { background: var(--blue); color: var(--paper); border-color: var(--blue); }
+.t-prof { background: var(--blue); color: var(--paper); }
 .t-prof .chip { color: var(--amber-tint); opacity: 1; }
-.t-kv   { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+.t-kv   { background: var(--navy); color: var(--paper); }
 .t-kv .chip { color: var(--amber); opacity: 1; }
 .t-http { background: var(--blue-tint); }
 .t-auth { background: var(--amber-tint); }
 .t-blog { background: var(--paper); }
 
-/* ---------- contact ---------- */
 .links {
   list-style: none;
   margin: 0;
@@ -225,15 +231,14 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   text-decoration: none;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: var(--radius);
 }
 .links a span { min-width: 0; overflow-wrap: anywhere; }
-.links a:hover { border-color: var(--navy); }
+.links a:hover { }
 .links a:hover span { text-decoration: underline; }
 .links .icon { color: var(--blue); }
 .foot { margin-top: 22px !important; color: var(--navy-soft); font-size: 0.9rem; }
 
-/* ---------- tablet ---------- */
 @media (max-width: 880px) {
   .hero { grid-template-columns: 1fr; grid-template-rows: auto; min-height: 0; }
   .t-photo, .t-intro, .t-about { grid-column: 1 / -1; grid-row: auto; }
@@ -247,7 +252,6 @@ a { color: inherit; text-decoration-color: currentColor; text-underline-offset: 
   .t-rust .tile-label { margin: 0; }
 }
 
-/* ---------- phone ---------- */
 @media (max-width: 600px) {
   body { font-size: 17px; }
   .tile { padding: 24px 20px; }
